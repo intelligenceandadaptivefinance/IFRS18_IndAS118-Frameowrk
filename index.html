@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IFRS 18 / Ind AS 118 presentation diagnostic</title>
+<meta name="description" content="Browser-only diagnostic that rebuilds a chart of accounts under IFRS 18 or Ind AS 118. Your data never leaves your machine.">
+<style id="inline-css">
+:root{--navy:#0f2740;--blue:#1f5fa8;--teal:#128a7d;--gold:#c08a2e;--grey:#5b6b7b;
+ --red:#b03a3a;--green:#1a7a5e;--line:#dde4ea;--bg:#f6f8fa}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font:15px/1.55 Inter,-apple-system,"Segoe UI",Roboto,sans-serif;color:#16202b;background:var(--bg)}
+.wrap{max-width:1200px;margin:0 auto;padding:0 32px 80px}
+header{background:var(--navy);color:#fff;padding:28px 32px 24px}
+header .inner{max-width:1200px;margin:0 auto}
+header h1{margin:0;font-size:23px;font-weight:650;letter-spacing:-.3px}
+header p{margin:8px 0 0;color:#c6d4e2;font-size:14px;max-width:900px}
+.priv{display:inline-block;margin-top:12px;background:#17395c;border:1px solid #2d5c8a;
+ color:#a9c8e6;font-size:12px;padding:5px 12px;border-radius:20px}
+ol#steps{display:flex;gap:0;list-style:none;margin:0;padding:0;background:#fff;border-bottom:1px solid var(--line);
+ overflow-x:auto}
+#steps li{display:flex;align-items:center;gap:8px;padding:13px 22px;font-size:13px;color:var(--grey);white-space:nowrap}
+#steps li b{width:21px;height:21px;border-radius:50%;background:#e6ecf2;color:var(--grey);display:grid;
+ place-items:center;font-size:11.5px;font-weight:700}
+#steps li.on{color:var(--navy);font-weight:650;box-shadow:inset 0 -3px 0 var(--blue)}
+#steps li.on b{background:var(--blue);color:#fff}
+#steps li.done b{background:var(--green);color:#fff}
+main{padding-top:26px}
+h2{font-size:22px;font-weight:650;color:var(--navy);margin:0 0 8px;letter-spacing:-.2px}
+h2 .num{color:var(--blue);font-weight:700;margin-right:10px}
+h3{font-size:16px;color:var(--navy);margin:26px 0 10px}
+h3.sec{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--grey);
+ margin:30px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.lead{color:#3c4a58;max-width:920px;margin:0 0 22px}
+.hint{font-size:13px;color:var(--grey);margin:6px 0 0}
+section{background:#fff;border:1px solid var(--line);border-radius:7px;padding:26px 28px;margin-bottom:20px}
+.field{margin-bottom:22px}
+.field>label{display:block;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--grey);
+ font-weight:700;margin-bottom:8px}
+input,select{font:14px Inter,sans-serif;padding:9px 11px;border:1px solid #ccd6de;border-radius:4px;
+ background:#fff;color:#16202b;width:100%;max-width:520px}
+table.entry input,table.entry select{max-width:none;padding:6px 8px;font-size:13px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cards.sm{grid-template-columns:1fr 1fr}
+.card{text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:6px;padding:15px 17px;
+ cursor:pointer;font:inherit;transition:.12s}
+.card:hover{border-color:#a9bccd}
+.card.sel{border-color:var(--blue);background:#f2f7fd;box-shadow:0 0 0 3px rgba(31,95,168,.10)}
+.card b{display:block;color:var(--navy);font-size:15px;margin-bottom:4px}
+.card span{display:block;color:var(--grey);font-size:13px;line-height:1.42}
+.card i{display:block;color:var(--blue);font-size:12px;font-style:normal;margin-top:6px}
+.btn{font:600 14px Inter,sans-serif;background:var(--blue);color:#fff;border:0;border-radius:5px;
+ padding:11px 22px;cursor:pointer}
+.btn:hover{background:#17518f}
+.btn:disabled{background:#c2ced8;cursor:not-allowed}
+.btn.ghost{background:#fff;color:var(--navy);border:1.5px solid var(--line)}
+.link{background:none;border:0;color:var(--blue);font:600 13px Inter,sans-serif;cursor:pointer;padding:4px 0}
+.link.del{color:var(--red)}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:30px;
+ padding-top:22px;border-top:1px solid var(--line)}
+.drop{border:2px dashed #b9c8d6;border-radius:8px;padding:44px;text-align:center;cursor:pointer;background:#fff}
+.drop.over{border-color:var(--blue);background:#f2f7fd}
+.drop b{display:block;color:var(--navy);font-size:16px;margin-bottom:6px}
+.drop span{color:var(--grey);font-size:13px}
+.maprows{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+.maprow label{display:block;font-size:12px;color:var(--grey);font-weight:650;margin-bottom:4px}
+.maprow label em{color:var(--red);font-style:normal}
+.maprow select{max-width:none}
+.callout{background:#f7f9fb;border-left:4px solid var(--blue);padding:13px 18px;border-radius:0 4px 4px 0;
+ margin:18px 0;font-size:14px}
+.callout.warn{background:#fdf7e8;border-color:var(--gold)}
+.callout.crit{background:#fbeaea;border-color:var(--red)}
+.callout.ok{background:#e9f5f0;border-color:var(--green)}
+.callout ul{margin:8px 0 0;padding-left:20px}
+.callout li{margin:3px 0}
+.scroll{overflow-x:auto;margin:14px 0;border:1px solid var(--line);border-radius:5px;background:#fff}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th{background:var(--navy);color:#fff;text-align:left;padding:9px 11px;font-weight:600;font-size:11.5px;
+ letter-spacing:.03em;position:sticky;top:0}
+td{padding:8px 11px;border-bottom:1px solid #eef2f5;vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+td.neg{color:var(--red)}
+.pill{display:inline-block;font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;font-weight:700;
+ padding:2px 7px;border-radius:3px;white-space:nowrap}
+.pill.ok{background:#e7f4ef;color:var(--green)}
+.pill.warn{background:#fdf3e0;color:var(--gold)}
+.pill.crit{background:#fbeaea;color:var(--red)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:13px;margin:20px 0}
+.kpi{background:#f7f9fb;border-left:3px solid var(--blue);border-radius:0 4px 4px 0;padding:13px 15px}
+.kpi b{display:block;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--grey);margin-bottom:5px}
+.kpi span{display:block;font-size:23px;font-weight:700;color:var(--navy);font-variant-numeric:tabular-nums}
+.kpi i{display:block;font-size:11.5px;color:var(--grey);font-style:normal;margin-top:3px}
+svg{width:100%;height:auto;display:block;margin:20px 0;background:#fff}
+.bar{height:5px;background:#e6ecf2;border-radius:3px;overflow:hidden;margin:6px 0}
+.bar div{height:100%;background:var(--green);transition:width .25s}
+.qbar{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--grey);margin-bottom:18px}
+.q{background:#fff;border:1px solid var(--line);border-left:4px solid #d5dee6;border-radius:5px;
+ padding:15px 18px;margin-bottom:11px}
+.q.ans{border-left-color:var(--green)}
+.qh{display:flex;gap:11px;align-items:baseline;flex-wrap:wrap;margin-bottom:10px}
+.qid{font-weight:700;color:var(--blue);font-size:13px}
+.qt{flex:1;min-width:300px;font-weight:600;font-size:14.5px;line-height:1.42}
+.opts{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:8px}
+.opt{font:13px Inter,sans-serif;background:#f2f5f8;border:1px solid #dfe6ec;border-radius:4px;
+ padding:6px 12px;cursor:pointer;text-align:left}
+.opt:hover{border-color:#a9bccd}
+.opt.sug{border-style:dashed;border-color:#a8d5c4}
+.opt.sel{background:var(--blue);border-color:var(--blue);color:#fff;font-weight:600}
+details summary{cursor:pointer;font-size:12.5px;color:var(--blue);font-weight:600}
+details p{font-size:13.5px;color:#3c4a58;margin:9px 0}
+.cite{font-size:12px;color:var(--grey)}
+.mpm{border:1px solid var(--line);border-radius:5px;padding:16px 19px;margin-bottom:14px;background:#fcfdfe}
+.mpm h3{margin:0 0 6px}
+.resbar{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;
+ background:#fff;border:1px solid var(--line);border-radius:7px;padding:20px 24px;margin-bottom:18px}
+.resbar .btn{margin-left:8px}
+footer{border-top:1px solid var(--line);padding:22px 32px;font-size:12.5px;color:var(--grey);background:#fff}
+footer .inner{max-width:1200px;margin:0 auto}
+body.print{background:#fff}
+body.print .wrap{padding:24px}
+@media(max-width:820px){.cards,.grid2,.maprows{grid-template-columns:1fr}.wrap{padding:0 16px 60px}
+ header{padding:22px 16px}footer{padding:18px 16px}}
+@media print{#steps,.nav,.resbar,header .priv{display:none}section{break-inside:avoid;border:0;padding:0}}
+</style>
+</head>
+<body>
+<header><div class="inner">
+ <h1>IFRS 18 / Ind AS 118 presentation diagnostic</h1>
+ <p>Answer the context questions, upload your chart of accounts, work through the guided questions, and the
+ engine rebuilds your statement of profit or loss under the selected standard &mdash; with the reconciliation,
+ the revised chart of accounts, the management performance measures, the citations and the justification for
+ every classification.</p>
+ <span class="priv">Runs entirely in your browser &middot; your chart of accounts is never uploaded anywhere</span>
+</div></header>
+<ol id="steps"></ol>
+<main class="wrap"><div id="view"></div></main>
+<footer><div class="inner">
+ Indicative diagnostic only. Not an audit, an assurance engagement or accounting advice. Ind AS 118 outputs are
+ based on the ICAI exposure draft of 6 January 2025; MCA notification, the Schedule III amendment and the SEBI
+ LODR alignment are pending.
+</div></footer>
+<script src="vendor/xlsx.full.min.js"></script>
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

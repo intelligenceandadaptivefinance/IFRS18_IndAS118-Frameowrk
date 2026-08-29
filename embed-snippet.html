@@ -1,0 +1,62 @@
+<!-- IFRS 18 / Ind AS 118 diagnostic — embed for intelligentadaptivefinance.com
+     Paste into a Zoho Sites HTML / Custom Code widget on the target page.
+
+     TWO VERSIONS BELOW. Try A first. If Zoho strips the <script>, use B. -->
+
+
+<!-- ============ A. AUTO-HEIGHT (preferred) ============ -->
+
+<iframe
+  id="ifrs18-tool"
+  src="https://YOUR-SITE.netlify.app/"
+  title="IFRS 18 / Ind AS 118 presentation diagnostic"
+  loading="lazy"
+  style="width:100%;border:0;display:block;height:1600px"
+  sandbox="allow-scripts allow-same-origin allow-downloads allow-popups allow-modals"
+  referrerpolicy="strict-origin-when-cross-origin"></iframe>
+<script>
+// The tool posts its height on every view change. Without this the iframe either
+// clips the results (which run to several thousand pixels) or leaves a metre of
+// whitespace on the short screens.
+(function () {
+  var ORIGIN = 'https://YOUR-SITE.netlify.app';   // must match the src origin exactly
+  var f = document.getElementById('ifrs18-tool');
+  window.addEventListener('message', function (e) {
+    if (e.origin !== ORIGIN) return;              // never trust an unchecked origin
+    if (!e.data || e.data.type !== 'ifrs18-height') return;
+    var h = parseInt(e.data.height, 10);
+    if (h > 200 && h < 200000) f.style.height = h + 'px';
+  });
+})();
+</script>
+
+
+<!-- ============ B. NO-SCRIPT FALLBACK ============
+     Use if the Zoho widget strips <script>. The iframe scrolls internally
+     instead of growing the host page. Set the height to taste: 1600px shows
+     the wizard comfortably; the results view scrolls within the frame. -->
+
+<!--
+<iframe
+  src="https://YOUR-SITE.netlify.app/"
+  title="IFRS 18 / Ind AS 118 presentation diagnostic"
+  loading="lazy"
+  style="width:100%;border:0;display:block;height:1600px"
+  sandbox="allow-scripts allow-same-origin allow-downloads allow-popups allow-modals"
+  referrerpolicy="strict-origin-when-cross-origin"></iframe>
+-->
+
+
+<!-- ============ C. LINK-OUT FALLBACK ============
+     If the Zoho widget blocks iframes entirely, link to the Netlify site in a
+     new tab. Everything still works; you lose the in-page experience only. -->
+
+<!--
+<p style="margin:24px 0">
+  <a href="https://YOUR-SITE.netlify.app/" target="_blank" rel="noopener"
+     style="display:inline-block;background:#1f5fa8;color:#fff;text-decoration:none;
+            font:600 15px Inter,sans-serif;padding:13px 26px;border-radius:5px">
+    Open the IFRS 18 / Ind AS 118 diagnostic
+  </a>
+</p>
+-->
