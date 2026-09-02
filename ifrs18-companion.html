@@ -1,0 +1,1962 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IFRS 18: Where the Line Falls &#8212; A companion to the IFRS 18 / Ind AS 118 diagnostic | Intelligent Adaptive Finance</title>
+<meta name="description" content="IFRS 18 explained through its decision tree, MPM framework, aggregation principle and labelling rules, with a worked consumer goods example and 43 questions answered.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#051C2C;
+  --navy-2:#0A2A40;
+  --navy-3:#123A55;
+  --gold:#C8A45C;
+  --gold-soft:#E4CB98;
+  --ivory:#FBFAF7;
+  --paper:#FFFFFF;
+  --charcoal:#1F2933;
+  --slate:#5A6B7B;
+  --rule:#DDE4EC;
+  --rule-strong:#B5C1D1;
+  --cool-bg:#F4F7FA;
+  --warm-bg:#FBF6EC;
+  --terracotta:#B4552E;
+  --steel:#1E5AA8;
+  --sage:#4F7A63;
+  --rail:255px;
+  --measure:720px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--ivory);
+  color:var(--charcoal);
+  font-family:"Source Serif 4",Georgia,serif;
+  font-size:18px;
+  line-height:1.72;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- RAIL ---------- */
+.rail{
+  position:fixed;top:0;left:0;bottom:0;width:var(--rail);
+  background:var(--navy);color:#C9D6E2;
+  padding:34px 24px 28px;overflow-y:auto;z-index:40;
+  border-right:1px solid #02121D;
+}
+.rail .mark{
+  font-family:Inter,system-ui,sans-serif;font-size:10px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:6px;
+}
+.rail .site{
+  font-family:Inter,system-ui,sans-serif;font-size:13px;font-weight:600;
+  color:#F2F5F8;line-height:1.35;margin-bottom:26px;
+}
+.rail .railhead{
+  font-family:Inter,system-ui,sans-serif;font-size:9.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:#6E8299;font-weight:600;
+  padding-bottom:8px;border-bottom:1px solid #17384F;margin-bottom:12px;
+}
+.rail nav a{
+  display:block;font-family:Inter,system-ui,sans-serif;font-size:12.5px;
+  line-height:1.4;color:#A9BCCE;text-decoration:none;
+  padding:7px 10px 7px 12px;border-left:2px solid transparent;
+  border-radius:0 3px 3px 0;transition:all .18s ease;
+}
+.rail nav a:hover{color:#fff;background:#0C2C42;}
+.rail nav a.active{color:var(--gold-soft);border-left-color:var(--gold);background:#0C2C42;font-weight:500;}
+.rail .railfoot{
+  margin-top:28px;padding-top:16px;border-top:1px solid #17384F;
+  font-family:Inter,system-ui,sans-serif;font-size:10.5px;line-height:1.6;color:#61748A;
+}
+.railtoggle{display:none;}
+
+/* ---------- SHELL ---------- */
+.shell{margin-left:var(--rail);}
+.wrap{max-width:var(--measure);margin:0 auto;padding:0 28px;}
+
+/* ---------- HERO ---------- */
+.hero{
+  background:linear-gradient(160deg,var(--navy) 0%,var(--navy-2) 58%,var(--navy-3) 100%);
+  color:#EEF3F8;padding:76px 0 62px;position:relative;overflow:hidden;
+  border-bottom:3px solid var(--gold);
+}
+.hero:after{
+  content:"";position:absolute;right:-90px;top:-70px;width:380px;height:380px;
+  border:1px solid rgba(200,164,92,.20);border-radius:50%;
+}
+.hero:before{
+  content:"";position:absolute;right:10px;bottom:-140px;width:260px;height:260px;
+  border:1px solid rgba(200,164,92,.13);border-radius:50%;
+}
+.kicker{
+  font-family:Inter,system-ui,sans-serif;font-size:10.5px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:20px;
+}
+.hero h1{
+  font-family:Inter,system-ui,sans-serif;font-weight:700;letter-spacing:-.026em;
+  font-size:clamp(32px,4.6vw,52px);line-height:1.06;margin:0 0 18px;color:#FFF;
+}
+.hero .dek{
+  font-size:20px;line-height:1.6;color:#BCD0E2;max-width:600px;margin:0 0 30px;
+}
+.herometa{
+  display:flex;flex-wrap:wrap;gap:26px;padding-top:22px;
+  border-top:1px solid rgba(200,164,92,.28);
+  font-family:Inter,system-ui,sans-serif;font-size:11.5px;
+}
+.herometa div span{display:block;color:#7C93AB;letter-spacing:.14em;text-transform:uppercase;font-size:9.5px;margin-bottom:5px;font-weight:600;}
+.herometa div b{color:#E8EEF4;font-weight:500;}
+
+/* ---------- TYPE ---------- */
+main{padding:56px 0 40px;}
+section{margin-bottom:16px;scroll-margin-top:24px;}
+h2{
+  font-family:Inter,system-ui,sans-serif;font-weight:700;letter-spacing:-.02em;
+  font-size:27px;line-height:1.18;color:var(--navy);
+  margin:56px 0 6px;padding-top:26px;border-top:2px solid var(--rule-strong);
+}
+h2 .num{
+  display:block;font-size:10px;letter-spacing:.22em;color:var(--gold);
+  font-weight:600;margin-bottom:9px;text-transform:uppercase;
+}
+h3{
+  font-family:Inter,system-ui,sans-serif;font-weight:600;letter-spacing:-.012em;
+  font-size:18.5px;line-height:1.3;color:var(--navy-3);margin:34px 0 8px;
+}
+p{margin:0 0 19px;}
+strong{font-weight:600;color:var(--navy);}
+a{color:var(--steel);}
+.lede{font-size:20.5px;line-height:1.62;color:#2B3843;}
+.standfirst{
+  font-family:Inter,system-ui,sans-serif;font-size:13.5px;line-height:1.65;
+  color:var(--slate);margin:0 0 26px;
+}
+
+/* ---------- DEVICES ---------- */
+.pull{
+  margin:34px 0;padding:22px 26px;background:var(--paper);
+  border-left:3px solid var(--gold);border-top:1px solid var(--rule);
+  border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  font-size:19px;line-height:1.55;color:var(--navy);
+}
+.pull cite{display:block;margin-top:10px;font-family:Inter,sans-serif;font-size:11.5px;font-style:normal;color:var(--slate);letter-spacing:.04em;}
+
+.note{
+  background:var(--cool-bg);border:1px solid var(--rule-strong);border-radius:4px;
+  padding:18px 22px;margin:30px 0;font-size:16px;line-height:1.65;color:#2D3748;
+}
+.note b.lbl{
+  display:block;font-family:Inter,sans-serif;font-size:9.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--steel);margin-bottom:8px;font-weight:700;
+}
+
+/* ---------- EXHIBITS ---------- */
+figure.ex{
+  margin:40px 0;background:var(--paper);
+  border:1px solid var(--rule-strong);border-radius:5px;overflow:hidden;
+}
+figure.ex .exhead{
+  padding:15px 22px 13px;background:var(--cool-bg);border-bottom:1px solid var(--rule-strong);
+}
+figure.ex .exnum{
+  font-family:Inter,sans-serif;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;display:block;margin-bottom:5px;
+}
+figure.ex .extitle{
+  font-family:Inter,sans-serif;font-size:15px;font-weight:600;color:var(--navy);line-height:1.3;
+}
+figure.ex .exbody{padding:24px 20px 14px;background:var(--paper);}
+figure.ex svg{display:block;width:100%;height:auto;}
+figure.ex figcaption{
+  padding:13px 22px 16px;border-top:1px solid var(--rule);
+  font-family:Inter,sans-serif;font-size:12px;line-height:1.6;color:var(--slate);
+}
+
+/* ---------- TABLES ---------- */
+.tblwrap{overflow-x:auto;margin:34px 0;border:1px solid var(--rule-strong);border-radius:5px;}
+table{border-collapse:collapse;width:100%;background:var(--paper);font-family:Inter,sans-serif;font-size:13px;}
+thead th{
+  background:#DCE7F2;color:var(--steel);font-weight:700;text-align:left;
+  padding:12px 14px;border-bottom:2px solid var(--steel);
+  font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;vertical-align:bottom;
+}
+tbody td{padding:13px 14px;border-bottom:1px solid #E2E8F0;vertical-align:top;line-height:1.58;color:#2D3748;}
+tbody tr:last-child td{border-bottom:none;}
+tbody td:first-child{font-weight:600;color:var(--navy);}
+td .rungtag{
+  display:inline-block;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
+  font-weight:700;padding:2px 7px;border-radius:3px;margin-bottom:6px;
+}
+.r1{background:#EAF0F6;color:#3C5A75;}
+.r2{background:#FBF0DE;color:#8A6420;}
+.r3{background:#EDF3EF;color:#3D6350;}
+
+/* discipline table */
+.disc td{font-size:12.5px;}
+.disc td:first-child{width:23%;}
+.disc td.exp,.disc td.con{width:38.5%;}
+.disc .arrow{color:var(--steel);font-weight:700;}
+.disc .lab{font-weight:700;color:var(--navy);}
+.disc p.line{margin:0 0 7px;}
+.disc td.con{background:#FCFDFE;}
+
+/* ---------- CARD ---------- */
+.rulethin{height:2px;background:var(--rule-strong);margin:56px 0 14px;border:0;}
+.cardlbl{
+  font-family:Inter,sans-serif;font-size:10px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--slate);font-weight:700;margin-bottom:12px;
+}
+.card{background:var(--cool-bg);border:1px solid var(--rule-strong);border-radius:6px;overflow:hidden;}
+.cardrow{display:flex;gap:0;border-bottom:1px solid #D9E0E8;}
+.cardrow:last-child{border-bottom:none;}
+.cardrow .k{
+  flex:0 0 158px;padding:12px 16px;font-family:Inter,sans-serif;font-size:9.5px;
+  letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#5A6B7B;
+}
+.cardrow .v{padding:12px 16px;font-size:15px;color:#1A202C;}
+.pill{
+  display:inline-block;background:#fff;border:1px solid var(--rule-strong);border-radius:20px;
+  padding:3px 11px;font-family:Inter,sans-serif;font-size:11px;color:var(--slate);
+  margin:0 5px 5px 0;
+}
+.meta-editorial{
+  margin-top:34px;padding-top:16px;border-top:1px solid var(--rule);
+  font-family:Inter,sans-serif;font-size:12px;line-height:1.7;color:#6B7A8A;
+}
+.meta-editorial h4{
+  font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:#8494A4;
+  font-weight:700;margin:0 0 10px;
+}
+.meta-editorial b{color:#4A5A6A;font-weight:600;}
+
+/* carry away */
+.carry p{padding-left:20px;border-left:2px solid var(--rule);margin-bottom:15px;font-size:17px;}
+.carry p strong{color:var(--navy);}
+
+/* adjacent reading */
+.tier{margin:22px 0;}
+.tier h4{
+  font-family:Inter,sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;margin:0 0 8px;
+}
+.tier ul{margin:0 0 0 18px;padding:0;font-size:16.5px;}
+.tier li{margin-bottom:8px;line-height:1.6;}
+.starthere{
+  background:var(--warm-bg);border:1px solid #E0D2B4;border-radius:5px;
+  padding:16px 20px;margin-top:24px;font-size:16.5px;line-height:1.6;
+}
+.starthere b{font-family:Inter,sans-serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8A6420;display:block;margin-bottom:7px;}
+
+/* closing */
+.charge{
+  margin:30px 0 26px;padding:20px 24px;background:var(--navy);color:#DCE6EF;
+  border-radius:5px;font-size:17px;line-height:1.62;
+}
+.charge b{
+  display:block;font-family:Inter,sans-serif;font-size:10px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--gold);margin-bottom:9px;font-weight:700;
+}
+.finalq{
+  font-style:italic;font-size:21px;line-height:1.5;color:var(--navy);
+  text-align:center;margin:40px auto 10px;max-width:560px;
+}
+.lensclose{font-style:italic;color:var(--slate);font-size:16.5px;line-height:1.66;
+  border-left:2px solid var(--rule-strong);padding-left:18px;margin-top:26px;}
+
+footer.site{
+  margin-top:60px;background:var(--navy);color:#7F93A8;padding:34px 0 40px;
+  font-family:Inter,sans-serif;font-size:12px;line-height:1.7;
+}
+footer.site .wrap{max-width:var(--measure);}
+footer.site b{color:var(--gold-soft);font-weight:600;}
+footer.site .wrap,footer.site p{text-align:left;}
+footer.site a{color:#A9C2DA;text-decoration:none;border-bottom:1px solid rgba(169,194,218,.35);}
+footer.site a:hover{color:#E4CB98;border-bottom-color:#E4CB98;}
+
+@media(max-width:980px){
+  :root{--rail:0px;}
+  .rail{position:static;width:auto;height:auto;padding:20px 22px;}
+  .rail nav{display:flex;flex-wrap:wrap;gap:4px;}
+  .rail nav a{border-left:none;border-bottom:2px solid transparent;font-size:11.5px;padding:5px 9px;}
+  .rail nav a.active{border-left:none;border-bottom-color:var(--gold);}
+  .shell{margin-left:0;}
+  body{font-size:17px;}
+  .hero{padding:48px 0 40px;}
+}
+
+/* ===== BANNER A: full-bleed hero, index relocated below ===== */
+.shell{margin-left:0;}
+.hero{position:relative;overflow:hidden;padding:0;display:flex;align-items:center;
+  min-height:360px;border-bottom:3px solid var(--gold);}
+.hero:before,.hero:after{display:none;}
+.heroart{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:1;}
+.hero .wrap{position:relative;z-index:2;max-width:1180px;padding:56px 42px 52px;}
+.hero h1{max-width:640px;}
+.hero .dek{max-width:560px;}
+.herometa{max-width:640px;}
+.layout{max-width:1180px;margin:0 auto;padding:52px 42px 0;
+  display:flex;gap:46px;align-items:flex-start;}
+.rail{inset:auto;position:sticky;top:26px;flex:0 0 var(--rail);width:var(--rail);
+  height:auto;bottom:auto;left:auto;overflow:visible;border-right:none;
+  border:1px solid #02121D;border-radius:6px;padding:24px 22px 20px;}
+.content{flex:1;min-width:0;max-width:var(--measure);}
+.content main{padding:0 0 40px;}
+.content .wrap{max-width:100%;padding:0;margin:0;}
+footer.site .wrap{max-width:1180px;padding:0 42px;}
+@media(max-width:980px){
+  .layout{flex-direction:column;gap:26px;padding:26px 22px 0;}
+  .rail{position:static;flex:1 1 auto;width:100%;border-radius:5px;}
+  .hero{min-height:0;}
+  .hero .wrap{padding:44px 22px 38px;}
+  footer.site .wrap{padding:0 22px;}
+}
+
+/* ===== WIDE LAYOUT: index hard left, content column widened ===== */
+:root{--shellmax:1500px; --prose:820px;}
+.hero .wrap{max-width:var(--shellmax);padding:56px 40px 52px 30px;}
+.hero h1{max-width:680px;}
+.hero .dek{max-width:590px;}
+.herometa{max-width:660px;}
+
+.layout{max-width:var(--shellmax);padding:52px 40px 0 30px;gap:54px;}
+.content{max-width:none;flex:1 1 auto;}
+footer.site .wrap{max-width:var(--shellmax);padding:0 40px 0 30px;}
+
+/* prose keeps a readable measure; exhibits and tables take the full column */
+.content p,
+.content h2,
+.content h3,
+.content .standfirst,
+.content .lensclose,
+.content .pull,
+.content .note,
+.content .tier,
+.content .starthere,
+.content .charge,
+.content .carry{max-width:var(--prose);}
+.content .finalq{max-width:600px;}
+.content figure.ex,
+.content .tblwrap,
+.content .card,
+.content .rulethin,
+.content .meta-editorial{max-width:none;}
+.content .meta-editorial p{max-width:var(--prose);}
+
+@media(max-width:1180px){
+  :root{--prose:100%;}
+  .layout{gap:40px;padding:44px 26px 0 24px;}
+  .hero .wrap{padding:52px 26px 46px 24px;}
+  footer.site .wrap{padding:0 26px 0 24px;}
+}
+@media(max-width:980px){
+  .layout{flex-direction:column;gap:26px;padding:26px 22px 0;}
+  .hero .wrap{padding:44px 22px 38px;}
+  footer.site .wrap{padding:0 22px;}
+}
+
+/* ===== BANNER RESIZE: narrower block, smaller display type ===== */
+.hero{max-width:var(--shellmax);margin:0 auto;min-height:296px;
+  border-left:1px solid rgba(200,164,92,.22);border-right:1px solid rgba(200,164,92,.22);}
+.hero .wrap{padding:42px 40px 40px 34px;}
+.hero .dek{font-size:17px;line-height:1.58;max-width:520px;margin-bottom:24px;}
+.herometa{padding-top:18px;gap:22px;}
+.herometa div span{font-size:9px;}
+.herometa div b{font-size:11.5px;}
+@media(max-width:1180px){
+  .hero{border-left:none;border-right:none;}
+  .hero .wrap{padding:38px 26px 34px 24px;}
+}
+@media(max-width:980px){
+  .hero{min-height:0;}
+  .hero .wrap{padding:34px 22px 30px;}
+}
+
+.hero h1{font-size:clamp(25px,2.9vw,37px);max-width:560px;margin-bottom:14px;
+  font-family:Inter,system-ui,sans-serif;font-weight:700;letter-spacing:-.03em;}
+
+/* ===== REFERENCES ===== */
+.refblock{margin:26px 0 30px;max-width:var(--prose);}
+.refblock h4{
+  font-family:Inter,sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;margin:0 0 12px;padding-bottom:8px;
+  border-bottom:1px solid var(--rule);
+}
+ol.reflist{margin:0;padding-left:22px;font-family:Inter,sans-serif;font-size:13.5px;line-height:1.62;color:#2D3748;}
+ol.reflist li{margin-bottom:14px;padding-left:4px;}
+ol.reflist li::marker{color:var(--slate);font-weight:600;}
+ol.reflist a{color:var(--steel);text-decoration:none;border-bottom:1px solid rgba(30,90,168,.35);font-weight:600;}
+ol.reflist a:hover{border-bottom-color:var(--steel);background:#EAF0F6;}
+.refnote{display:block;margin-top:4px;font-size:12.5px;line-height:1.58;color:var(--slate);}
+.refnote b{color:var(--navy);}
+
+/* ===== COLLAPSIBLE DISCIPLINES ===== */
+.pcontrols{max-width:var(--prose);display:flex;justify-content:flex-end;gap:8px;margin:0 0 18px;}
+.pallbtn{
+  font-family:Inter,sans-serif;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
+  font-weight:700;color:var(--slate);background:var(--paper);
+  border:1px solid var(--rule-strong);border-radius:3px;padding:7px 12px;
+  cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:all .16s ease;
+}
+.pallbtn:hover{color:var(--navy);border-color:var(--navy-3);background:var(--cool-bg);}
+.pallbtn .sg{font-size:13px;line-height:1;font-weight:700;color:var(--gold);}
+.plist{max-width:var(--prose);border:1px solid var(--rule-strong);border-radius:5px;overflow:hidden;background:var(--paper);}
+.pitem{border-bottom:1px solid var(--rule-strong);}
+.pitem:last-child{border-bottom:none;}
+.phead{
+  width:100%;display:flex;align-items:center;gap:14px;text-align:left;
+  background:var(--cool-bg);border:0;cursor:pointer;padding:15px 18px;
+  font-family:Inter,sans-serif;transition:background .16s ease;
+}
+.phead:hover{background:#E8EFF6;}
+.pitem.open .phead{background:#E4EDF5;}
+.phead .pnum{flex:0 0 auto;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--gold);}
+.phead .ptitle{flex:1 1 auto;font-size:14.5px;font-weight:600;color:var(--navy);line-height:1.35;}
+.phead .psign{
+  flex:0 0 24px;width:24px;height:24px;border:1px solid var(--rule-strong);border-radius:3px;
+  background:var(--paper);color:var(--steel);font-size:15px;font-weight:700;line-height:22px;
+  text-align:center;transition:all .16s ease;
+}
+.phead:hover .psign{border-color:var(--steel);background:#EAF0F6;}
+.pbody{padding:4px 18px 18px;}
+.pbody[hidden]{display:none;}
+.pcols{display:flex;gap:24px;}
+.pcol{flex:1 1 0;min-width:0;}
+.pcol h5{
+  font-family:Inter,sans-serif;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
+  font-weight:700;margin:14px 0 10px;padding-bottom:7px;border-bottom:1px solid var(--rule);
+}
+.pcol--exp h5{color:var(--steel);}
+.pcol--con h5{color:var(--sage);}
+.pcol p.line{margin:0 0 9px;font-family:Inter,sans-serif;font-size:12.5px;line-height:1.6;color:#2D3748;}
+.pcol .arrow{color:var(--steel);font-weight:700;}
+.pcol .lab{font-weight:700;color:var(--navy);}
+@media(max-width:760px){
+  .pcols{flex-direction:column;gap:0;}
+  .phead{gap:10px;padding:13px 14px;}
+  .phead .pnum{flex-basis:100%;}
+}
+
+/* footer */
+footer.site .wrap,footer.site p{text-align:left;}
+footer.site a{color:#A9C2DA;text-decoration:none;border-bottom:1px solid rgba(169,194,218,.35);}
+footer.site a:hover{color:#E4CB98;border-bottom-color:#E4CB98;}
+
+/* ===== REFERENCES ===== */
+.refblock{margin:26px 0 30px;max-width:var(--prose);}
+.refblock h4{
+  font-family:Inter,sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);font-weight:700;margin:0 0 12px;padding-bottom:8px;
+  border-bottom:1px solid var(--rule);
+}
+ol.reflist{margin:0;padding-left:22px;font-family:Inter,sans-serif;font-size:13.5px;line-height:1.62;color:#2D3748;}
+ol.reflist li{margin-bottom:14px;padding-left:4px;}
+ol.reflist li::marker{color:var(--slate);font-weight:600;}
+ol.reflist a{color:var(--steel);text-decoration:none;border-bottom:1px solid rgba(30,90,168,.35);font-weight:600;}
+ol.reflist a:hover{border-bottom-color:var(--steel);background:#EAF0F6;}
+.refnote{display:block;margin-top:4px;font-size:12.5px;line-height:1.58;color:var(--slate);}
+.refnote b{color:var(--navy);}
+
+/* ===== COLLAPSIBLE PRINCIPLES ===== */
+.pcontrols{
+  max-width:var(--prose);display:flex;justify-content:flex-end;gap:8px;
+  margin:0 0 18px;
+}
+.pallbtn{
+  font-family:Inter,sans-serif;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
+  font-weight:700;color:var(--slate);background:var(--paper);
+  border:1px solid var(--rule-strong);border-radius:3px;padding:7px 12px;
+  cursor:pointer;display:inline-flex;align-items:center;gap:7px;transition:all .16s ease;
+}
+.pallbtn:hover{color:var(--navy);border-color:var(--navy-3);background:var(--cool-bg);}
+.pallbtn .sg{font-size:13px;line-height:1;font-weight:700;color:var(--gold);}
+.plist{max-width:var(--prose);border:1px solid var(--rule-strong);border-radius:5px;overflow:hidden;background:var(--paper);}
+.pitem{border-bottom:1px solid var(--rule-strong);}
+.pitem:last-child{border-bottom:none;}
+.phead{
+  width:100%;display:flex;align-items:center;gap:14px;text-align:left;
+  background:var(--cool-bg);border:0;cursor:pointer;padding:15px 18px;
+  font-family:Inter,sans-serif;transition:background .16s ease;
+}
+.phead:hover{background:#E8EFF6;}
+.pitem.open .phead{background:#E4EDF5;}
+.phead .pnum{
+  flex:0 0 auto;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
+  font-weight:700;color:var(--gold);
+}
+.phead .ptitle{flex:1 1 auto;font-size:14.5px;font-weight:600;color:var(--navy);line-height:1.35;}
+.phead .psign{
+  flex:0 0 24px;width:24px;height:24px;border:1px solid var(--rule-strong);border-radius:3px;
+  background:var(--paper);color:var(--steel);font-size:15px;font-weight:700;line-height:22px;
+  text-align:center;transition:all .16s ease;
+}
+.phead:hover .psign{border-color:var(--steel);background:#EAF0F6;}
+.pbody{padding:4px 18px 18px;}
+.pbody[hidden]{display:none;}
+.pcols{display:flex;gap:24px;}
+.pcol{flex:1 1 0;min-width:0;}
+.pcol h5{
+  font-family:Inter,sans-serif;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;
+  font-weight:700;margin:14px 0 10px;padding-bottom:7px;border-bottom:1px solid var(--rule);
+}
+.pcol--exp h5{color:var(--steel);}
+.pcol--con h5{color:var(--sage);}
+.pcol p.line{
+  margin:0 0 9px;font-family:Inter,sans-serif;font-size:12.5px;line-height:1.6;color:#2D3748;
+}
+.pcol .arrow{color:var(--steel);font-weight:700;}
+.pcol .lab{font-weight:700;color:var(--navy);}
+@media(max-width:760px){
+  .pcols{flex-direction:column;gap:0;}
+  .phead{gap:10px;padding:13px 14px;}
+  .phead .pnum{flex-basis:100%;}
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+<header class="hero">
+  <svg class="heroart" viewBox="0 0 1400 360" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="hbBg" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color="#051C2C"/><stop offset="52%" stop-color="#0A2A40"/><stop offset="100%" stop-color="#123A55"/>
+      </linearGradient>
+      <linearGradient id="hbFade" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#000"/><stop offset="34%" stop-color="#000"/><stop offset="52%" stop-color="#2E2E2E"/>
+        <stop offset="70%" stop-color="#8A8A8A"/><stop offset="86%" stop-color="#D8D8D8"/><stop offset="100%" stop-color="#FFF"/>
+      </linearGradient>
+      <linearGradient id="hbVert" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#3A3A3A"/><stop offset="26%" stop-color="#FFF"/>
+        <stop offset="74%" stop-color="#FFF"/><stop offset="100%" stop-color="#2A2A2A"/>
+      </linearGradient>
+      <mask id="hbMask">
+        <rect x="0" y="0" width="1400" height="360" fill="url(#hbFade)"/>
+        <rect x="0" y="0" width="1400" height="360" fill="url(#hbVert)" style="mix-blend-mode:multiply"/>
+      </mask>
+      <radialGradient id="hbGlow" cx="0.5" cy="0.5" r="0.5">
+        <stop offset="0%" stop-color="#1E5A82" stop-opacity=".55"/>
+        <stop offset="55%" stop-color="#134263" stop-opacity=".26"/>
+        <stop offset="100%" stop-color="#051C2C" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="hbSig" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#C8A45C" stop-opacity=".18"/>
+        <stop offset="55%" stop-color="#C8A45C" stop-opacity=".7"/>
+        <stop offset="100%" stop-color="#F2B478"/>
+      </linearGradient>
+    </defs>
+
+    <rect width="1400" height="360" fill="url(#hbBg)"/>
+    <circle cx="1290" cy="-40" r="230" fill="none" stroke="#C8A45C" stroke-opacity=".13"/>
+    <circle cx="1210" cy="400" r="180" fill="none" stroke="#C8A45C" stroke-opacity=".09"/>
+    <ellipse cx="1085" cy="180" rx="430" ry="265" fill="url(#hbGlow)"/>
+
+    <g mask="url(#hbMask)">
+      <!-- original motif: scattered fringe points resolving into one carried signal -->
+      <g transform="translate(760,0)">
+        <g fill="#C8A45C" fill-opacity=".55">
+          <circle cx="40" cy="72" r="3.4"/><circle cx="96" cy="256" r="2.8"/><circle cx="128" cy="128" r="3.8"/>
+          <circle cx="168" cy="300" r="2.6"/><circle cx="196" cy="46" r="3.2"/><circle cx="232" cy="212" r="4"/>
+          <circle cx="268" cy="112" r="2.9"/><circle cx="298" cy="288" r="3.4"/><circle cx="330" cy="164" r="4.2"/>
+          <circle cx="366" cy="64" r="3"/><circle cx="392" cy="236" r="3.6"/><circle cx="426" cy="140" r="4.4"/>
+          <circle cx="462" cy="196" r="4"/><circle cx="496" cy="118" r="4.6"/><circle cx="524" cy="222" r="4.2"/>
+        </g>
+        <g stroke="#C8A45C" stroke-opacity=".22" stroke-width="1.2" fill="none">
+          <path d="M40 72 L128 128 L232 212 L330 164 L426 140 L496 118"/>
+          <path d="M96 256 L168 300 L298 288 L392 236 L462 196 L524 222"/>
+          <path d="M196 46 L268 112 L330 164 M366 64 L426 140"/>
+        </g>
+        <!-- the carried wave: noisy at the fringe, coherent as it moves right -->
+        <path d="M20 300 L60 292 L84 308 L118 286 L146 302 L182 274 L214 296 L248 262
+                 L286 288 L322 244 L364 274 L404 222 L448 250 L494 194 L540 216 L590 158
+                 L640 176 L700 118"
+              fill="none" stroke="url(#hbSig)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="700" cy="118" r="9" fill="#F2B478"/>
+        <circle cx="700" cy="118" r="20" fill="none" stroke="#F2B478" stroke-opacity=".45" stroke-width="2"/>
+        <circle cx="700" cy="118" r="34" fill="none" stroke="#F2B478" stroke-opacity=".22" stroke-width="1.6"/>
+      </g>
+    </g>
+  </svg>
+  <div class="wrap">
+    <div class="kicker">Article &#183; Financial Reporting</div>
+    <h1><span class="l1">Profit Stays Still.</span><span class="l2">Everything Above It Moves.</span></h1>
+    <p class="dek">IFRS 18 changes no measurement and leaves profit for the period untouched. It also moves the most quoted line in equity research, closes the exceptional-items escape valve, and drags management&#8217;s own performance measures into the audited notes. This is the reasoning behind the diagnostic, set out so the answer can be argued with.</p>
+    <div class="herometa">
+      <div><span>Standard</span><b>IFRS 18</b></div>
+      <div><span>Effective</span><b>1 January 2027</b></div>
+      <div class="bylineStrip"><span>Article written by</span><b>Krishnendu Pal</b></div>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+<aside class="rail">
+  <div class="mark">Article</div>
+  <div class="site">Intelligent Adaptive Finance</div>
+  <div class="railhead">Contents</div>
+  <nav id="toc">
+    <!-- one anchor per section id, in document order -->
+    <a href="#essence">The essence</a>
+    <a href="#decision-tree">Decision tree</a>
+    <a href="#mpm">Performance measures</a>
+    <a href="#aggregation">Aggregation</a>
+    <a href="#labelling">Labelling</a>
+    <a href="#worked">Worked example</a>
+    <a href="#faq">Frequently asked</a>
+    <a href="#howto">How to use this</a>
+    <a href="#abbreviations">Abbreviations</a>
+    <a href="#references">References</a>
+  </nav>
+  <div class="railfoot">
+    IFRS 18, IASB, April 2024<br>EY, Applying IFRS, April 2026<br>KPMG, First Impressions, June 2024<br>Deloitte, iGAAP in Focus, April 2024
+  </div>
+</aside>
+<div class="content">
+<main>
+<div class="wrap">
+
+
+<section id="essence">
+<h2><span class="num">1 &#183; The essence</span>A standard about where the line falls, not what the number is</h2>
+
+<p class="lede">IFRS 18 changes almost nothing about measurement. Profit for the period on the day
+before adoption equals profit for the period on the day after. What changes is the architecture
+above that number &#8212; where the subtotals fall, what may be aggregated with what, and which
+of management&#8217;s own measures must now be reconciled inside audited financial statements.
+That sounds procedural. It is not. Operating profit is the single most quoted line in equity
+research, and for most reporters it is about to move.</p>
+
+<p>The IASB began the primary financial statements project in 2016 after investors said the same
+thing repeatedly: they could not compare companies because companies were not required to present
+comparable subtotals. IAS 1 permitted an operating profit line without defining it. Two businesses
+with identical economics could publish operating margins several points apart and both be
+compliant, because one pushed restructuring below the line and the other did not.</p>
+
+<p>IFRS 18 closes that. It supersedes IAS 1, applies for annual periods beginning on or after
+1 January 2027, and does three things. It classifies every item of income and expense into five
+categories and mandates three subtotals. It defines management performance measures and drags them
+into the audited notes. And it replaces IAS 1&#8217;s thin aggregation guidance with a principle
+that has teeth.</p>
+
+<div class="note">
+<b class="lbl">What this piece is for</b>
+This is the companion to the diagnostic tool. The tool takes a chart of accounts and rebuilds the
+statement; this piece explains the reasoning the tool applies, so that the answer it produces can
+be argued with rather than merely accepted. Where the standard leaves a genuine choice, that is
+said plainly rather than resolved by assertion.
+</div>
+
+<figure class="ex">
+  <div class="exhead">
+    <span class="exnum">Exhibit 1</span>
+    <span class="extitle">Three mandatory subtotals replace one undefined line</span>
+  </div>
+  <div class="exbody">
+    <svg viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg" role="img"
+      aria-label="Comparison of the IAS 1 income statement structure against the five IFRS 18 categories and three mandatory subtotals">
+      <defs><style>
+        .t{font-family:Inter,sans-serif;font-size:10.5px;fill:#5A6B7B}
+        .h{font-family:Inter,sans-serif;font-size:11.5px;font-weight:700;fill:#0F2740}
+        .w{font-family:Inter,sans-serif;font-size:10.5px;font-weight:600;fill:#fff}
+        .g{font-family:Inter,sans-serif;font-size:9.5px;fill:#8A98A6;letter-spacing:.06em}
+      </style></defs>
+      <text x="14" y="16" class="g">UNDER IAS 1</text>
+      <text x="380" y="16" class="g">UNDER IFRS 18</text>
+      <rect x="14" y="28" width="300" height="34" rx="3" fill="#E8EDF2"/>
+      <text x="26" y="49" class="h">Revenue</text>
+      <rect x="14" y="66" width="300" height="34" rx="3" fill="#E8EDF2"/>
+      <text x="26" y="87" class="h">Operating profit &#8212; not defined</text>
+      <rect x="14" y="104" width="300" height="34" rx="3" fill="#E8EDF2"/>
+      <text x="26" y="125" class="h">Exceptional items &#8212; permitted</text>
+      <rect x="14" y="142" width="300" height="34" rx="3" fill="#E8EDF2"/>
+      <text x="26" y="163" class="h">Finance costs</text>
+      <rect x="14" y="180" width="300" height="34" rx="3" fill="#E8EDF2"/>
+      <text x="26" y="201" class="h">Profit before tax</text>
+      <text x="26" y="236" class="t">One subtotal, no definition. Comparability</text>
+      <text x="26" y="252" class="t">between entities is not achievable.</text>
+
+      <rect x="380" y="28" width="306" height="30" rx="3" fill="#1F5FA8"/>
+      <text x="392" y="47" class="w">OPERATING &#8212; the residual category</text>
+      <rect x="380" y="62" width="306" height="26" rx="3" fill="#0F2740"/>
+      <text x="392" y="79" class="w">Operating profit or loss</text>
+      <rect x="380" y="92" width="306" height="30" rx="3" fill="#128A7D"/>
+      <text x="392" y="111" class="w">INVESTING</text>
+      <rect x="380" y="126" width="306" height="26" rx="3" fill="#0F2740"/>
+      <text x="392" y="143" class="w">Profit before financing and income taxes</text>
+      <rect x="380" y="156" width="306" height="30" rx="3" fill="#C08A2E"/>
+      <text x="392" y="175" class="w">FINANCING</text>
+      <rect x="380" y="190" width="306" height="26" rx="3" fill="#0F2740"/>
+      <text x="392" y="207" class="w">Profit before income taxes</text>
+      <rect x="380" y="220" width="148" height="26" rx="3" fill="#7A8794"/>
+      <text x="392" y="237" class="w">INCOME TAX</text>
+      <rect x="536" y="220" width="150" height="26" rx="3" fill="#7A8794"/>
+      <text x="548" y="237" class="w">DISCONTINUED</text>
+      <text x="392" y="272" class="t">Five categories, three subtotals, one</text>
+      <text x="392" y="288" class="t">definition. Exceptional items prohibited</text>
+      <text x="392" y="304" class="t">as a subtotal on the face.</text>
+    </svg>
+  </div>
+  <figcaption>The three subtotals are cumulative, not parallel. Each is the one above plus the next
+  category, so the statement cross-foots by construction and the categories cannot overlap.</figcaption>
+</figure>
+
+<p>Two features of that structure carry most of the consequences, and both are easy to miss.</p>
+
+<p><b>Operating is a residual.</b> Nothing is assigned to operating. An item lands there because it
+failed the investing test, the financing test, the income tax test and the discontinued operations
+test. That single design decision is why the exceptional-items escape valve closes: there is no
+longer anywhere below the line to put an item that does not qualify for one of the defined
+categories.</p>
+
+<p><b>The categories are level-specific.</b> The classification of an item depends on the reporting
+entity assessing it, not on the item itself. A subsidiary and its parent can classify the same
+receipt differently and both be right, because the main-business-activities test is run once per
+reporting entity. That is the source of the consolidation reclassification layer, and it is the
+part most transition plans discover late.</p>
+</section>
+
+
+<section id="decision-tree">
+<h2><span class="num">2 &#183; The decision tree</span>Every item of income and expense, tested in one order</h2>
+
+<p>Classification is not a matter of judgement applied freshly to each line. It is a sequence of
+tests applied in a fixed order, and the order matters because the earlier tests are absolute. An
+item that meets an earlier definition cannot be reclassified on the grounds that a later category
+would be more informative.</p>
+
+<figure class="ex">
+  <div class="exhead">
+    <span class="exnum">Exhibit 2</span>
+    <span class="extitle">Six tests, applied in order; operating catches whatever survives</span>
+  </div>
+  <div class="exbody">
+    <svg viewBox="0 0 700 430" xmlns="http://www.w3.org/2000/svg" role="img"
+      aria-label="Decision tree for classifying income and expenses under IFRS 18, running from income tax through equity-accounted results, specified main business activities, financing, investing, and finally the operating residual">
+      <defs>
+        <marker id="dt" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto">
+          <path d="M0,0 L8,4 L0,8 z" fill="#5A6B7B"/></marker>
+        <style>
+          .q{font-family:Inter,sans-serif;font-size:10.5px;fill:#0F2740}
+          .a{font-family:Inter,sans-serif;font-size:10px;font-weight:700;fill:#fff}
+          .y{font-family:Inter,sans-serif;font-size:9px;fill:#5A6B7B}
+          .r{font-family:Inter,sans-serif;font-size:9px;fill:#8A98A6}
+        </style>
+      </defs>
+      <rect x="200" y="10" width="230" height="40" rx="4" fill="#fff" stroke="#0F2740" stroke-width="1.4"/>
+      <text x="215" y="27" class="q">Is it income tax under IAS 12,</text>
+      <text x="215" y="41" class="q">or a discontinued operation?</text>
+      <rect x="470" y="14" width="216" height="32" rx="4" fill="#7A8794"/>
+      <text x="484" y="34" class="a">Separate mandatory lines</text>
+      <path d="M430,30 L466,30" stroke="#5A6B7B" stroke-width="1.4" marker-end="url(#dt)"/>
+      <text x="440" y="24" class="y">yes</text>
+      <path d="M315,50 L315,74" stroke="#5A6B7B" stroke-width="1.4" marker-end="url(#dt)"/>
+      <text x="322" y="66" class="y">no</text>
+
+      <rect x="200" y="76" width="230" height="40" rx="4" fill="#fff" stroke="#0F2740" stroke-width="1.4"/>
+      <text x="215" y="93" class="q">Is it the share of profit or loss of an</text>
+      <text x="215" y="107" class="q">equity-accounted associate or JV?</text>
+      <rect x="470" y="80" width="216" height="32" rx="4" fill="#128A7D"/>
+      <text x="484" y="100" class="a">INVESTING &#8212; mandatory</text>
+      <path d="M430,96 L466,96" stroke="#5A6B7B" stroke-width="1.4" marker-end="url(#dt)"/>
+      <text x="440" y="90" class="y">yes</text>
+      <path d="M315,116 L315,140" stroke="#5A6B7B" stroke-width="1.4" marker-end="url(#dt)"/>
+      <text x="322" y="132" class="y">no</text>
+
+      <rect x="200" y="142" width="230" height="52" rx="4" fill="#fff" stroke="#0F2740" stroke-width="1.4"/>
+      <text x="215" y="159" class="q">Is investing in assets, or providing</text>
+      <text x="215" y="173" class="q">financing to customers, a main business</text>
+      <text x="215" y="187" class="q">activity of THIS reporting entity?</text>
+      <rect x="470" y="152" width="216" height="32" rx="4" fill="#1F5FA8"/>
+      <text x="484" y="172" class="a">OPERATING &#8212; the exception</text>
+      <path d="M430,168 L466,168" stroke="#5A6B7B" stroke-width="1.4" marker-end="url(#dt)"/>
+      <text x="440" y="162" class="y">yes</text>
+      <path d="M315,194 L315,218" stroke="#5A6B7B" stroke-width="1.4" marker-end="url(#dt)"/>
+      <text x="322" y="210" class="y">no</text>
+
+      <rect x="200" y="220" width="230" height="52" rx="4" fill="#fff" stroke="#0F2740" stroke-width="1.4"/>
+      <text x="215" y="237" class="q">Does it arise from the raising of</text>
+      <text x="215" y="251" class="q">finance, or from a liability that</text>
+      <text x="215" y="265" class="q">involves only the raising of finance?</text>
+      <rect x="470" y="230" width="216" height="32" rx="4" fill="#C08A2E"/>
+      <text x="484" y="250" class="a">FINANCING</text>
+      <path d="M430,246 L466,246" stroke="#5A6B7B" stroke-width="1.4" marker-end="url(#dt)"/>
+      <text x="440" y="240" class="y">yes</text>
+      <path d="M315,272 L315,296" stroke="#5A6B7B" stroke-width="1.4" marker-end="url(#dt)"/>
+      <text x="322" y="288" class="y">no</text>
+
+      <rect x="200" y="298" width="230" height="52" rx="4" fill="#fff" stroke="#0F2740" stroke-width="1.4"/>
+      <text x="215" y="315" class="q">Does it arise from an asset that</text>
+      <text x="215" y="329" class="q">generates a return individually and</text>
+      <text x="215" y="343" class="q">largely independently of other resources?</text>
+      <rect x="470" y="308" width="216" height="32" rx="4" fill="#128A7D"/>
+      <text x="484" y="328" class="a">INVESTING</text>
+      <path d="M430,324 L466,324" stroke="#5A6B7B" stroke-width="1.4" marker-end="url(#dt)"/>
+      <text x="440" y="318" class="y">yes</text>
+      <path d="M315,350 L315,374" stroke="#5A6B7B" stroke-width="1.4" marker-end="url(#dt)"/>
+      <text x="322" y="366" class="y">no</text>
+
+      <rect x="200" y="376" width="230" height="34" rx="4" fill="#1F5FA8"/>
+      <text x="215" y="397" class="a">OPERATING &#8212; the residual</text>
+      <text x="14" y="396" class="r">Nothing is assigned here.</text>
+      <text x="14" y="408" class="r">Items land here by failing every other test.</text>
+    </svg>
+  </div>
+  <figcaption>The order is not a convenience. An item that meets an earlier definition cannot be
+  moved to a later category because the later one would present better.</figcaption>
+</figure>
+
+<h3>The fixed points that override judgement</h3>
+
+<p>Seven determinations are settled by the standard and are not available as accounting policy
+choices. Each is a place where the tool refuses to offer an option, and each is a place where a
+transition project will otherwise waste a meeting.</p>
+
+<div class="tblwrap">
+<table>
+<thead><tr><th style="width:34%">Item</th><th style="width:20%">Category</th><th>Why it is not a judgement</th></tr></thead>
+<tbody>
+<tr><td>Share of profit of equity-accounted associates and joint ventures</td><td>Investing</td>
+<td>Mandatory. There is no route to operating other than measuring the investment at fair value under the IAS 28.18 exemption, which is available only to venture capital organisations, mutual funds and unit trusts.</td></tr>
+<tr><td>Restructuring costs</td><td>Operating</td>
+<td>Explicitly operating. This is the single largest source of the operating-profit decline for most reporters, because restructuring is the most commonly exceptionalised item.</td></tr>
+<tr><td>An exceptional items subtotal on the face</td><td>Prohibited</td>
+<td>Items sit in their natural category. Note disaggregation is the only permitted route to highlighting them.</td></tr>
+<tr><td>Net interest on a defined benefit obligation</td><td>Financing</td>
+<td>Named as financing. It must be separated from the service cost, which stays in operating as employee benefits.</td></tr>
+<tr><td>Right-of-use asset depreciation</td><td>Operating</td>
+<td>Depreciation follows the asset. The lease liability interest is financing, so a single lease charge is split across two subtotals.</td></tr>
+<tr><td>Foreign exchange differences</td><td>Follows the underlying</td>
+<td>The difference takes the category of the item it arises on. Relief exists where tracing involves undue cost or effort, but the relief must be assessed, not assumed.</td></tr>
+<tr><td>Income taxes</td><td>Single mandatory line</td>
+<td>A closed line. Only amounts accounted for under IAS 12 may enter it, which makes the treatment of interest on tax a consequential policy choice rather than a detail.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>The exception that reshapes financial sector statements</h3>
+
+<p>Two activities are singled out: investing in assets, and providing financing to customers. Where
+either is a main business activity of the reporting entity, income and expenses that would
+otherwise be investing or financing are classified as operating instead. Deloitte notes that some
+entities &#8212; investment entities and retail banks are the examples given &#8212; may conduct
+both.</p>
+
+<p>The effect on a lender is structural rather than marginal. Interest income on the loan book and
+the cost of funding it both sit inside operating profit, and the financing category collapses to
+whatever borrowing is unrelated to the lending business, plus lease liability interest. For a
+non-banking financial company the financing subtotal can become close to meaningless, which is the
+intended outcome: for a lender, funding cost is a cost of sale.</p>
+
+<p>KPMG flags the corollary that catches conglomerates. The classification is made once, at
+reporting entity level, and then applies to every liability in the group. A manufacturing division
+inside a group that has concluded financing customers is a main business activity does not get to
+apply its own answer. IFRS 18.65 offers an accounting policy choice for liabilities unrelated to
+the customer-financing activity, and that choice is also made once.</p>
+</section>
+
+
+<section id="mpm">
+<h2><span class="num">3 &#183; Management performance measures</span>The adjusted number walks into the audit</h2>
+
+<p>Adjusted operating profit, underlying earnings, core EBITDA: measures of this kind have lived
+outside the financial statements for thirty years, defined by the entity, reconciled at the
+entity&#8217;s discretion, and reviewed by no one with a statutory duty. IFRS 18 ends that. A
+measure meeting the definition must be disclosed in a single note inside the audited financial
+statements, with a reconciliation, the income tax effect of each reconciling item, and the effect
+on non-controlling interests.</p>
+
+<p>KPMG puts the consequence in one line that is worth repeating to any board that has not yet
+absorbed it: because the notes are an integral part of the financial statements, MPM information is
+subject to audit. For most groups this is the first time an investor relations artefact becomes a
+controlled financial reporting output with a named process owner.</p>
+
+<h3>Three limbs, all of which must hold</h3>
+
+<figure class="ex">
+  <div class="exhead">
+    <span class="exnum">Exhibit 3</span>
+    <span class="extitle">A measure is an MPM only where all three limbs are satisfied</span>
+  </div>
+  <div class="exbody">
+    <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" role="img"
+      aria-label="Three-limb test for a management performance measure: publicly communicated outside the financial statements, a subtotal of income and expenses, and not a subtotal specified by IFRS Accounting Standards">
+      <defs><style>
+        .h{font-family:Inter,sans-serif;font-size:11px;font-weight:700;fill:#0F2740}
+        .b{font-family:Inter,sans-serif;font-size:10px;fill:#5A6B7B}
+        .w{font-family:Inter,sans-serif;font-size:11px;font-weight:700;fill:#fff}
+        .g{font-family:Inter,sans-serif;font-size:9.5px;fill:#8A98A6;letter-spacing:.06em}
+      </style></defs>
+      <rect x="14" y="30" width="210" height="112" rx="4" fill="#F4F7FA" stroke="#C9D5DF"/>
+      <text x="30" y="52" class="h">Limb 1</text>
+      <text x="30" y="72" class="b">Communicated publicly</text>
+      <text x="30" y="88" class="b">OUTSIDE the financial</text>
+      <text x="30" y="104" class="b">statements &#8212; releases,</text>
+      <text x="30" y="120" class="b">decks, transcripts,</text>
+      <text x="30" y="136" class="b">management commentary</text>
+
+      <rect x="245" y="30" width="210" height="112" rx="4" fill="#F4F7FA" stroke="#C9D5DF"/>
+      <text x="261" y="52" class="h">Limb 2</text>
+      <text x="261" y="72" class="b">A subtotal of income</text>
+      <text x="261" y="88" class="b">and expenses. A ratio is</text>
+      <text x="261" y="104" class="b">not &#8212; but its numerator</text>
+      <text x="261" y="120" class="b">can be, even if never</text>
+      <text x="261" y="136" class="b">published on its own</text>
+
+      <rect x="476" y="30" width="210" height="112" rx="4" fill="#F4F7FA" stroke="#C9D5DF"/>
+      <text x="492" y="52" class="h">Limb 3</text>
+      <text x="492" y="72" class="b">NOT a subtotal specified</text>
+      <text x="492" y="88" class="b">by the standard. Gross</text>
+      <text x="492" y="104" class="b">profit and OPDAI are</text>
+      <text x="492" y="120" class="b">carved out; an additional</text>
+      <text x="492" y="136" class="b">subtotal generally is not</text>
+
+      <path d="M119,142 L119,176 L350,176" stroke="#5A6B7B" stroke-width="1.3" fill="none"/>
+      <path d="M350,142 L350,176" stroke="#5A6B7B" stroke-width="1.3" fill="none"/>
+      <path d="M581,142 L581,176 L350,176" stroke="#5A6B7B" stroke-width="1.3" fill="none"/>
+      <path d="M350,176 L350,196" stroke="#5A6B7B" stroke-width="1.3" fill="none"/>
+      <rect x="196" y="198" width="308" height="34" rx="4" fill="#B03A3A"/>
+      <text x="216" y="220" class="w">ALL THREE &#8594; it is an MPM. Full note applies.</text>
+      <text x="216" y="256" class="b">Any one fails and the measure sits outside the framework</text>
+      <text x="216" y="272" class="b">entirely &#8212; which is itself a finding worth reporting.</text>
+      <text x="14" y="20" class="g">THE TEST</text>
+    </svg>
+  </div>
+  <figcaption>The interesting output of an MPM review is often the measure that fails: the entity
+  believes it has an MPM and does not, or believes it has none and has three.</figcaption>
+</figure>
+
+<h3>Four traps in the definition</h3>
+
+<p><b>The numerator of a ratio.</b> A published ratio is not an MPM. But the numerator can be, even
+where the numerator is never disclosed on its own. Return on capital employed built on adjusted
+operating profit therefore drags an unpublished subtotal into the audited note. The requirement
+that a measure be used by itself in public communications is disapplied for this case.</p>
+
+<p><b>Measures the entity is about to drop.</b> Ceasing to use a measure does not end the
+obligation. The comparative must be restated and the cessation explained. An entity treating the
+transition as a chance to rationalise its measures must plan the disclosure alongside the decision,
+and must retain the ability to compute the abandoned measure for at least one further period.</p>
+
+<p><b>OPDAI is not EBITDA.</b> Operating profit before depreciation, amortisation and impairment
+within the scope of IAS 36 is a specified subtotal, so presenting it does not trigger the note.
+KPMG&#8217;s view is that the Board does not prohibit labelling it EBITDA but expects that would
+rarely be accurate, because OPDAI still excludes investing income and may include operating
+interest. Any EBITDA computed on a different basis is an MPM with the full note attached.</p>
+
+<p><b>Segment measures.</b> The Board declined to exclude them. A segment measure normally fails the
+definition because it describes a component rather than the entity, but where a dominant segment
+serves as a proxy for the whole, it can qualify. That is a judgement to settle before the first
+close rather than argue at it.</p>
+
+<div class="pull">
+The escape valve is gone. Anything an entity still wants to present as non-recurring must survive an
+audited reconciliation, a disclosed definition, and consistency period to period.
+<cite>On the practical effect of IFRS 18.B11</cite>
+</div>
+
+<h3>What the note must contain</h3>
+
+<div class="tblwrap">
+<table>
+<thead><tr><th style="width:30%">Requirement</th><th>What it means in practice</th></tr></thead>
+<tbody>
+<tr><td>A statement of purpose</td><td>That the MPMs give management&#8217;s view of an aspect of the performance of the entity as a whole, and are not necessarily comparable with similarly labelled measures of other entities.</td></tr>
+<tr><td>Description of the aspect communicated</td><td>Why management believes the measure is useful. A description that could apply to any company is a sign the measure has not been thought through.</td></tr>
+<tr><td>How it is calculated</td><td>The definition, stated well enough that a reader could rebuild it.</td></tr>
+<tr><td>Reconciliation to the most directly comparable specified subtotal</td><td>Each reconciling item shown separately. This is what forces the adjustments to be extractable by rule from tagged accounts rather than assembled in a spreadsheet.</td></tr>
+<tr><td>Income tax effect of each reconciling item</td><td>Per item, not in total. Plus a description of how the tax effect was determined.</td></tr>
+<tr><td>Effect on non-controlling interests</td><td>Per item. For a group with material minorities this is a genuine systems requirement.</td></tr>
+<tr><td>Changes, additions and cessations</td><td>Explanation, reasons, effects, and restated comparatives.</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>The design constraint that follows is the one most transition plans underestimate. Every
+adjusting item must be computable per item, with its tax and minority effect, from the ledger. That
+is a chart of accounts requirement, and it has to be built before the first period it applies to,
+not discovered during the audit of that period.</p>
+</section>
+
+
+<section id="aggregation">
+<h2><span class="num">4 &#183; Aggregation and disaggregation</span>The principle that stops the single-line income statement</h2>
+
+<p>IAS 1 said material items should be presented separately and left it there. In practice that
+permitted income statements of six lines and note disclosure that grouped dissimilar things under
+headings no reader could interrogate. IFRS 18 replaces the gesture with a mechanism.</p>
+
+<p>The mechanism starts by giving the primary statements and the notes distinct roles. Deloitte
+sets them out: the primary statements provide a useful structured summary, so that a reader can
+obtain an understandable overview and make comparisons between entities and between periods. The
+notes supply the material information needed to understand the items in that summary. Once the
+roles differ, the question &#8220;face or note?&#8221; has an answer that is not simply
+preference.</p>
+
+<figure class="ex">
+  <div class="exhead">
+    <span class="exnum">Exhibit 4</span>
+    <span class="extitle">Aggregate by shared characteristics; disaggregate when the result is material</span>
+  </div>
+  <div class="exbody">
+    <svg viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" role="img"
+      aria-label="Process for aggregating and disaggregating: classify by characteristics, aggregate items sharing them, disaggregate where dissimilar characteristics make the split material, and label the result">
+      <defs>
+        <marker id="ag" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto">
+          <path d="M0,0 L9,4.5 L0,9 z" fill="#1F5FA8"/></marker>
+        <style>
+          .h{font-family:Inter,sans-serif;font-size:11px;font-weight:700;fill:#0F2740}
+          .b{font-family:Inter,sans-serif;font-size:9.8px;fill:#5A6B7B}
+          .g{font-family:Inter,sans-serif;font-size:9.5px;fill:#8A98A6;letter-spacing:.06em}
+        </style>
+      </defs>
+      <text x="14" y="18" class="g">THE SEQUENCE</text>
+      <rect x="14" y="32" width="150" height="96" rx="4" fill="#fff" stroke="#1F5FA8" stroke-width="1.4"/>
+      <text x="28" y="54" class="h">1 &#183; Classify</text>
+      <text x="28" y="74" class="b">Identify the</text>
+      <text x="28" y="89" class="b">characteristics of</text>
+      <text x="28" y="104" class="b">each item: nature,</text>
+      <text x="28" y="119" class="b">function, category</text>
+
+      <rect x="190" y="32" width="150" height="96" rx="4" fill="#fff" stroke="#1F5FA8" stroke-width="1.4"/>
+      <text x="204" y="54" class="h">2 &#183; Aggregate</text>
+      <text x="204" y="74" class="b">Group items that</text>
+      <text x="204" y="89" class="b">SHARE those</text>
+      <text x="204" y="104" class="b">characteristics.</text>
+      <text x="204" y="119" class="b">Similar with similar</text>
+
+      <rect x="366" y="32" width="150" height="96" rx="4" fill="#fff" stroke="#1F5FA8" stroke-width="1.4"/>
+      <text x="380" y="54" class="h">3 &#183; Disaggregate</text>
+      <text x="380" y="74" class="b">Split where a</text>
+      <text x="380" y="89" class="b">dissimilar</text>
+      <text x="380" y="104" class="b">characteristic makes</text>
+      <text x="380" y="119" class="b">the split material</text>
+
+      <rect x="542" y="32" width="144" height="96" rx="4" fill="#fff" stroke="#C08A2E" stroke-width="1.4"/>
+      <text x="556" y="54" class="h">4 &#183; Label</text>
+      <text x="556" y="74" class="b">Name the result</text>
+      <text x="556" y="89" class="b">faithfully. &#8220;Other&#8221;</text>
+      <text x="556" y="104" class="b">only when no better</text>
+      <text x="556" y="119" class="b">label exists</text>
+
+      <path d="M164,80 L186,80" stroke="#1F5FA8" stroke-width="1.4" marker-end="url(#ag)"/>
+      <path d="M340,80 L362,80" stroke="#1F5FA8" stroke-width="1.4" marker-end="url(#ag)"/>
+      <path d="M516,80 L538,80" stroke="#1F5FA8" stroke-width="1.4" marker-end="url(#ag)"/>
+
+      <rect x="14" y="156" width="336" height="120" rx="4" fill="#F4F7FA"/>
+      <text x="30" y="178" class="h">Face of the statement</text>
+      <text x="30" y="200" class="b">A useful structured summary. Enough lines to</text>
+      <text x="30" y="216" class="b">show the main drivers of profitability; few</text>
+      <text x="30" y="232" class="b">enough to be an overview. Comparability</text>
+      <text x="30" y="248" class="b">between entities is an explicit purpose.</text>
+
+      <rect x="366" y="156" width="320" height="120" rx="4" fill="#F4F7FA"/>
+      <text x="382" y="178" class="h">The notes</text>
+      <text x="382" y="200" class="b">Material information needed to understand</text>
+      <text x="382" y="216" class="b">the summary. This is where former</text>
+      <text x="382" y="232" class="b">exceptional items are highlighted, and where</text>
+      <text x="382" y="248" class="b">the five specified natures are disclosed.</text>
+    </svg>
+  </div>
+  <figcaption>Aggregation is by shared characteristic, not by size or convenience. The question is
+  never &#8220;is this big enough to show separately?&#8221; but &#8220;does this differ from what
+  it is grouped with, in a way that matters?&#8221;</figcaption>
+</figure>
+
+<h3>Nature, function, or both</h3>
+
+<p>Operating expenses must be classified and presented in the way that gives the most useful
+structured summary, using nature, function, or a mix. Deloitte notes the factors the standard
+directs an entity to weigh: which line items give the most useful information about the main
+components or drivers of profitability, and industry practice.</p>
+
+<p>The consequence of choosing function is where the cost sits. An entity presenting one or more
+operating expense line items by function must disclose specified expenses by nature in a single
+note. The IFRS Interpretations Committee confirmed in March 2026 that this requirement contains no
+exceptions: it applies whether the function presentation was the entity&#8217;s election or was
+required by another standard. An insurer presenting insurance service expenses is caught having
+made no choice at all.</p>
+
+<div class="note">
+<b class="lbl">The systems consequence</b>
+The five specified natures must be produced across every functional line. A chart of accounts built
+on function alone cannot do that. Function has to be a dimension the ledger can cut by nature
+simultaneously, which for most function-presenting entities is a real change rather than a
+re-tagging exercise.
+</div>
+
+<h3>The five specified natures</h3>
+
+<div class="tblwrap">
+<table>
+<thead><tr><th style="width:38%">Specified nature</th><th>Why this one</th></tr></thead>
+<tbody>
+<tr><td>Depreciation</td><td>Needed to strike OPDAI and to assess capital intensity across entities presenting differently.</td></tr>
+<tr><td>Amortisation</td><td>Separated from depreciation because acquisition-driven amortisation behaves differently from asset consumption.</td></tr>
+<tr><td>Employee benefits</td><td>The largest cost in most service businesses and the one most obscured by functional presentation.</td></tr>
+<tr><td>Impairment losses and reversals within IAS 36</td><td>Reversals count. Netting them against losses defeats the disclosure.</td></tr>
+<tr><td>Write-downs of inventories and reversals</td><td>Same logic, and a direct signal of demand or obsolescence.</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>One subtlety the Interpretations Committee addressed: the disclosed amount need not be the
+expense for the period, because it may include amounts capitalised into assets. Where that is so,
+the fact must be disclosed. An entity that quietly discloses only the expensed portion has not
+complied.</p>
+</section>
+
+
+<section id="labelling">
+<h2><span class="num">5 &#183; Labelling</span>&#8220;Other&#8221; is now a question, not a resting place</h2>
+
+<p>Labelling receives more attention in IFRS 18 than it ever did in IAS 1, because the Board
+identified it as the point where good aggregation quietly becomes bad disclosure. An item group can
+be correctly formed and still be uninformative if the label describes nothing.</p>
+
+<p>The requirement is not a prohibition. Labelling an aggregate as &#8220;other&#8221; remains
+permitted. What attaches is an obligation to evaluate whether a more informative label exists, and,
+where an aggregate consists only of immaterial items, to consider whether it has become large
+enough that a reader could reasonably question what is inside it. Where no better label is
+available and the balance is material, the nature and amount of the largest item within the
+aggregate must be disclosed.</p>
+
+<figure class="ex">
+  <div class="exhead">
+    <span class="exnum">Exhibit 5</span>
+    <span class="extitle">The test a residual label has to pass</span>
+  </div>
+  <div class="exbody">
+    <svg viewBox="0 0 700 260" xmlns="http://www.w3.org/2000/svg" role="img"
+      aria-label="Decision path for labelling an aggregated item: whether a more informative label exists, whether the aggregate is large enough to attract questions, and the disclosure that follows">
+      <defs>
+        <marker id="lb" markerWidth="8" markerHeight="8" refX="6.5" refY="4" orient="auto">
+          <path d="M0,0 L8,4 L0,8 z" fill="#5A6B7B"/></marker>
+        <style>
+          .q{font-family:Inter,sans-serif;font-size:10.5px;fill:#0F2740}
+          .a{font-family:Inter,sans-serif;font-size:10px;font-weight:700;fill:#fff}
+          .y{font-family:Inter,sans-serif;font-size:9px;fill:#5A6B7B}
+        </style>
+      </defs>
+      <rect x="150" y="16" width="300" height="34" rx="4" fill="#fff" stroke="#0F2740" stroke-width="1.4"/>
+      <text x="166" y="38" class="q">Does a more informative label exist?</text>
+      <rect x="480" y="18" width="206" height="30" rx="4" fill="#1A7A5E"/>
+      <text x="494" y="38" class="a">Use it. Nothing further.</text>
+      <path d="M450,33 L476,33" stroke="#5A6B7B" stroke-width="1.4" marker-end="url(#lb)"/>
+      <text x="456" y="27" class="y">yes</text>
+      <path d="M300,50 L300,74" stroke="#5A6B7B" stroke-width="1.4" marker-end="url(#lb)"/>
+      <text x="307" y="66" class="y">no</text>
+
+      <rect x="150" y="76" width="300" height="48" rx="4" fill="#fff" stroke="#0F2740" stroke-width="1.4"/>
+      <text x="166" y="94" class="q">Is the aggregate large enough that a reader</text>
+      <text x="166" y="110" class="q">could reasonably ask what is inside it?</text>
+      <rect x="480" y="85" width="206" height="30" rx="4" fill="#7A8794"/>
+      <text x="494" y="105" class="a">&#8220;Other&#8221; is acceptable</text>
+      <path d="M450,100 L476,100" stroke="#5A6B7B" stroke-width="1.4" marker-end="url(#lb)"/>
+      <text x="456" y="94" class="y">no</text>
+      <path d="M300,124 L300,148" stroke="#5A6B7B" stroke-width="1.4" marker-end="url(#lb)"/>
+      <text x="307" y="140" class="y">yes</text>
+
+      <rect x="150" y="150" width="300" height="48" rx="4" fill="#C08A2E"/>
+      <text x="166" y="168" class="a">Disclose the nature and amount of the</text>
+      <text x="166" y="184" class="a">largest item within the aggregate</text>
+      <text x="150" y="224" class="y">The ledger must retain the granularity even where the face does not show it.</text>
+      <text x="150" y="240" class="y">This is usually the largest single source of new accounts on transition.</text>
+    </svg>
+  </div>
+  <figcaption>The obligation is to evaluate, not to eliminate. But an entity that has never run the
+  evaluation cannot demonstrate it reached a conclusion.</figcaption>
+</figure>
+
+<h3>Labelling the subtotals themselves</h3>
+
+<p>Alternative labels for the mandatory subtotals are permitted where they faithfully represent the
+item. Operating result and net operating income are both defensible. Retaining the standard&#8217;s
+own wording is the lower-risk course in the first year, for a reason that has nothing to do with
+compliance: the new subtotal will not equal the entity&#8217;s previous operating profit, and a
+familiar label invites the comparison that the entity least wants a reader to make casually.</p>
+
+<p>The same discipline applies to MPM labels. The note must state that measures are not necessarily
+comparable with similarly labelled measures of other entities &#8212; which is an admission that
+the label is doing less work than readers assume. Naming a measure &#8220;underlying profit&#8221;
+and defining it idiosyncratically is permitted, and now sits next to an audited reconciliation that
+shows exactly how idiosyncratic it is.</p>
+</section>
+
+
+<section id="worked">
+<h2><span class="num">6 &#183; A worked example</span>A consumer goods group, where the subtotal barely moves and the note explodes</h2>
+
+<div class="note">
+<b class="lbl">On the figures</b>
+The group below is an illustrative consumer goods business, built to the shape of a large listed
+FMCG group of the Unilever type &#8212; global turnover, function-based presentation, an underlying
+operating profit measure, acquired brand amortisation, a rolling restructuring programme, and
+equity-accounted associates. The figures are constructed for this article and are not any
+company&#8217;s audited results. They are internally consistent and cross-foot; they are not a
+substitute for running an entity&#8217;s own numbers.
+</div>
+
+<p>A consumer goods group is the instructive case precisely because it is not the dramatic one. A
+lender sees its financing subtotal collapse; an infrastructure group finds concession interest
+moving into operating. An FMCG group sees its operating subtotal move very little &#8212; and then
+discovers that the number it actually manages the business on has moved into the audited notes.</p>
+
+<figure class="ex">
+  <div class="exhead">
+    <span class="exnum">Exhibit 6</span>
+    <span class="extitle">The subtotal moves by 60; the measure management quotes moves by 1,770</span>
+  </div>
+  <div class="exbody">
+    <svg viewBox="0 0 700 330" xmlns="http://www.w3.org/2000/svg" role="img"
+      aria-label="Bridge showing the illustrative consumer goods group's reported operating profit of 8710 moving to an IFRS 18 operating profit of 8650, against an underlying operating profit measure of 10420">
+      <defs><style>
+        .h{font-family:Inter,sans-serif;font-size:11px;font-weight:700;fill:#0F2740}
+        .b{font-family:Inter,sans-serif;font-size:10px;fill:#5A6B7B}
+        .n{font-family:Inter,sans-serif;font-size:12px;font-weight:700;fill:#0F2740}
+        .w{font-family:Inter,sans-serif;font-size:10.5px;font-weight:700;fill:#fff}
+        .g{font-family:Inter,sans-serif;font-size:9.5px;fill:#8A98A6;letter-spacing:.06em}
+      </style></defs>
+      <text x="14" y="16" class="g">&#8364; MILLION &#183; ILLUSTRATIVE</text>
+
+      <rect x="14" y="34" width="150" height="52" rx="4" fill="#7A8794"/>
+      <text x="28" y="54" class="w">Operating profit</text>
+      <text x="28" y="69" class="w">as reported today</text>
+      <text x="150" y="80" class="w" text-anchor="end">8,710</text>
+
+      <path d="M170,60 L200,60" stroke="#5A6B7B" stroke-width="1.4"/>
+      <rect x="204" y="38" width="130" height="44" rx="4" fill="#FBEAEA" stroke="#B03A3A"/>
+      <text x="216" y="57" class="b">Disposal gain to</text>
+      <text x="216" y="72" class="b">investing  (60)</text>
+
+      <path d="M340,60 L370,60" stroke="#5A6B7B" stroke-width="1.4"/>
+      <rect x="374" y="34" width="160" height="52" rx="4" fill="#1F5FA8"/>
+      <text x="388" y="54" class="w">IFRS 18 operating</text>
+      <text x="388" y="69" class="w">profit</text>
+      <text x="520" y="80" class="w" text-anchor="end">8,650</text>
+      <text x="548" y="58" class="b">margin 14.4%</text>
+
+      <path d="M454,86 L454,120" stroke="#5A6B7B" stroke-width="1.4" stroke-dasharray="3 3"/>
+      <text x="14" y="118" class="g">THE MPM RECONCILIATION, NOW AUDITED</text>
+
+      <rect x="374" y="126" width="160" height="26" rx="3" fill="#E7F0FA"/>
+      <text x="386" y="144" class="b">Operating profit 8,650</text>
+      <rect x="374" y="156" width="160" height="26" rx="3" fill="#E9F5F0"/>
+      <text x="386" y="174" class="b">+ brand amortisation 900</text>
+      <rect x="374" y="186" width="160" height="26" rx="3" fill="#E9F5F0"/>
+      <text x="386" y="204" class="b">+ restructuring 750</text>
+      <rect x="374" y="216" width="160" height="26" rx="3" fill="#E9F5F0"/>
+      <text x="386" y="234" class="b">+ transaction costs 120</text>
+      <rect x="374" y="248" width="160" height="34" rx="4" fill="#C08A2E"/>
+      <text x="386" y="264" class="w">Underlying operating</text>
+      <text x="386" y="277" class="w">profit  10,420</text>
+      <text x="548" y="268" class="b">margin 17.4%</text>
+
+      <text x="14" y="150" class="b">Three percentage points of margin</text>
+      <text x="14" y="168" class="b">separate the statutory subtotal from</text>
+      <text x="14" y="186" class="b">the measure quoted at results. Under</text>
+      <text x="14" y="204" class="b">IAS 1 that gap lived in a slide deck.</text>
+      <text x="14" y="222" class="b">Under IFRS 18 it lives in an audited</text>
+      <text x="14" y="240" class="b">note, item by item, each with its own</text>
+      <text x="14" y="258" class="b">tax effect and minority-interest effect.</text>
+      <text x="14" y="300" class="g">THE SHOCK IS NOT THE SUBTOTAL. IT IS THE NOTE.</text>
+    </svg>
+  </div>
+  <figcaption>For a consumer goods group the categorisation is close to a re-labelling. The
+  transition effort sits almost entirely in the MPM framework and the nature disclosures.</figcaption>
+</figure>
+
+<h3>The restated statement</h3>
+
+<div class="tblwrap">
+<table>
+<thead><tr><th style="width:46%">Illustrative consumer goods group, &#8364; million</th>
+<th style="width:18%">Category</th><th style="width:18%">FY</th><th>Note</th></tr></thead>
+<tbody>
+<tr><td>Turnover</td><td>Operating</td><td>60,000</td><td>&#8212;</td></tr>
+<tr><td>Cost of sales</td><td>Operating</td><td>(33,800)</td><td>By function</td></tr>
+<tr><td>Distribution costs</td><td>Operating</td><td>(3,600)</td><td>By function</td></tr>
+<tr><td>Selling and administrative expenses</td><td>Operating</td><td>(12,400)</td><td>By function</td></tr>
+<tr><td>Amortisation of acquired brands</td><td>Operating</td><td>(900)</td><td>MPM adjusting item</td></tr>
+<tr><td>Restructuring</td><td>Operating</td><td>(750)</td><td>Mandatorily operating</td></tr>
+<tr><td>Acquisition and disposal transaction costs</td><td>Operating</td><td>(120)</td><td>Follows the acquired business</td></tr>
+<tr><td>Other operating income</td><td>Operating</td><td>220</td><td>&#8212;</td></tr>
+<tr><td><b>Operating profit</b></td><td>Subtotal</td><td><b>8,650</b></td><td>IFRS 18.45(a)</td></tr>
+<tr><td>Share of profit of associates and joint ventures</td><td>Investing</td><td>180</td><td>Mandatory, IFRS 18.43</td></tr>
+<tr><td>Gain on disposal of a business</td><td>Investing</td><td>60</td><td>Moves out of operating</td></tr>
+<tr><td>Interest income on deposits</td><td>Investing</td><td>140</td><td>Cash equivalents</td></tr>
+<tr><td><b>Profit before financing and income taxes</b></td><td>Subtotal</td><td><b>9,030</b></td><td>IFRS 18.45(b)</td></tr>
+<tr><td>Interest on borrowings</td><td>Financing</td><td>(1,020)</td><td>Type 1 liability</td></tr>
+<tr><td>Interest on lease liabilities</td><td>Financing</td><td>(110)</td><td>Type 2 liability</td></tr>
+<tr><td>Net interest on the defined benefit obligation</td><td>Financing</td><td>(60)</td><td>Mandatory, IFRS 18.51</td></tr>
+<tr><td><b>Profit before income taxes</b></td><td>Subtotal</td><td><b>7,840</b></td><td>IFRS 18.45(c)</td></tr>
+<tr><td>Income tax</td><td>Tax</td><td>(2,050)</td><td>Single mandatory line</td></tr>
+<tr><td><b>Profit for the period</b></td><td>&#8212;</td><td><b>5,790</b></td><td>Unchanged by the transition</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>What actually changed, and what it costs</h3>
+
+<p><b>The operating subtotal moved by 60 on turnover of 60,000.</b> One basis point. An entity
+reading only that line would conclude the transition is immaterial and staff it accordingly. That
+conclusion would be wrong, for four reasons that do not appear on the face.</p>
+
+<p><b>The underlying operating profit measure is now an MPM.</b> It is communicated publicly, it is
+a subtotal of income and expenses, and it is not specified by the standard. All three limbs hold.
+The reconciliation above must appear in a single audited note, and each of the three adjusting items
+needs its own tax effect and non-controlling-interest effect. Amortisation of acquired brands is
+straightforward; restructuring spanning several jurisdictions at different rates is not.</p>
+
+<p><b>The function presentation triggers the nature disclosures.</b> Cost of sales, distribution and
+selling and administrative are all functional. The group therefore owes depreciation, amortisation,
+employee benefits, impairment and inventory write-downs across all three lines &#8212; and its
+ledger, organised by function and cost centre, has never been asked to produce that cut.</p>
+
+<p><b>The associate result is fixed in investing.</b> A consumer goods group with material
+equity-accounted joint ventures cannot bring that result into operating profit however integral the
+ventures are to the business. The only route out is fair value measurement under IAS 28.18, which
+is unavailable to a trading group.</p>
+
+<p><b>The transaction costs split.</b> Costs of acquiring a business follow to operating because the
+business generates operating income; costs of acquiring an investment measured at fair value follow
+to investing. A single &#8220;professional fees&#8221; account cannot carry both.</p>
+
+<div class="pull">
+The entity with the smallest change to its subtotals often has the largest change to its control
+environment, because the measure it manages on has just entered audit scope.
+<cite>On why an FMCG transition is not a small one</cite>
+</div>
+
+<h3>Contrast: the same standard on a lender</h3>
+
+<div class="tblwrap">
+<table>
+<thead><tr><th style="width:30%"></th><th style="width:35%">Consumer goods group</th><th>Lender with financing as a main business activity</th></tr></thead>
+<tbody>
+<tr><td>Operating subtotal</td><td>Barely moves</td><td>Absorbs the entire cost of funds; can move by more than the reported profit</td></tr>
+<tr><td>Financing subtotal</td><td>Interest, leases, pension net interest</td><td>Collapses to unrelated borrowings and lease interest only</td></tr>
+<tr><td>Where the effort sits</td><td>MPM note and nature disclosures</td><td>Categorisation, the .47 conclusion, and the .65 election</td></tr>
+<tr><td>Investor conversation</td><td>Why the underlying measure differs from the statutory one</td><td>Why the financing line no longer means what it used to</td></tr>
+<tr><td>Riskiest single answer</td><td>Whether every published measure was swept</td><td>Whether financing customers is a main business activity, and at which level</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>The same standard produces opposite implementation profiles. Which is why a transition plan built
+from a generic checklist tends to over-resource the categorisation workstream at a consumer goods
+group and under-resource the MPM workstream, when the evidence points the other way.</p>
+</section>
+
+<section id="faq">
+<h2><span class="num">7 &#183; Frequently asked</span>Forty questions, grouped by where they bite</h2>
+<p>The questions below are drawn from the EY, Deloitte and KPMG publications and from the Interpretations Committee agenda decisions of March 2026. They are grouped by workstream rather than by paragraph, because that is how a transition team encounters them.</p>
+<div class="pcontrols">
+<button class="pallbtn" type="button" id="pExpandAll">Expand all <span class="sg">+</span></button>
+<button class="pallbtn" type="button" id="pCollapseAll">Collapse all <span class="sg">&#8722;</span></button>
+</div>
+<div class="plist" id="plist">
+<h3 style="margin-top:26px">Scope and the categories</h3>
+<div class="pitem" data-p="1">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-1">
+    <span class="pnum">Q1</span>
+    <span class="ptitle">Does IFRS 18 change profit for the period?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-1" hidden><p>No. It is a presentation and disclosure standard. Measurement is untouched, and profit for the period on the day before adoption equals profit on the day after. Everything that changes is the architecture above that number. If profit moves, something has been misclassified into or out of the tax line.</p></div>
+</div>
+<div class="pitem" data-p="2">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-2">
+    <span class="pnum">Q2</span>
+    <span class="ptitle">Is operating profit defined?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-2" hidden><p>Only as a residual. An item is operating because it failed the investing, financing, income tax and discontinued operations tests. There is no positive definition, and that is deliberate: a positive definition would have required the Board to enumerate operating activities for every industry.</p></div>
+</div>
+<div class="pitem" data-p="3">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-3">
+    <span class="pnum">Q3</span>
+    <span class="ptitle">Can an entity present an exceptional items subtotal?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-3" hidden><p>Not on the face. Items return to their natural category. Highlighting non-recurring items is still possible through note disaggregation, or through an MPM with the full reconciliation attached.</p></div>
+</div>
+<div class="pitem" data-p="4">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-4">
+    <span class="pnum">Q4</span>
+    <span class="ptitle">Where does restructuring go?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-4" hidden><p>Operating, always. This is the change that moves the most money for the most reporters, because restructuring is the item most commonly presented below the line today.</p></div>
+</div>
+<div class="pitem" data-p="5">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-5">
+    <span class="pnum">Q5</span>
+    <span class="ptitle">What if a reportable segment consists only of investing or of financing customers?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-5" hidden><p>It is evidence, not proof. IFRS 8 permits a segment to be reported on a qualitative threshold, so a single-activity reportable segment can be small relative to the entity. EY reads the standard&#8217;s wording as indicative rather than determinative. An entity may conclude against, but must evidence the rebuttal rather than assert it.</p></div>
+</div>
+<div class="pitem" data-p="6">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-6">
+    <span class="pnum">Q6</span>
+    <span class="ptitle">How does a pure holding company present its separate financial statements?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-6" hidden><p>This is among the hardest cases. If investing in subsidiaries is not a specified main business activity, the parent has no operating activities at all: operating profit is a loss equal to its own costs, and all investment returns sit in investing. If it is, dividend and fair value income move into operating. The Interpretations Committee considered the fact pattern in March 2026 and concluded it requires judgement on the parent&#8217;s specific facts.</p></div>
+</div>
+<h3 style="margin-top:26px">The specified main business activities</h3>
+<div class="pitem" data-p="7">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-7">
+    <span class="pnum">Q7</span>
+    <span class="ptitle">At what level is the test applied?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-7" hidden><p>Once per reporting entity. A subsidiary and its parent can reach different conclusions on the same item and both be right. Where they diverge, a reclassification is posted on consolidation that moves amounts between subtotals and never changes profit.</p></div>
+</div>
+<div class="pitem" data-p="8">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-8">
+    <span class="pnum">Q8</span>
+    <span class="ptitle">Can a conglomerate apply the answer division by division?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-8" hidden><p>No. EY&#8217;s view is that the IFRS 18.65 accounting policy choice for liabilities unrelated to customer financing is made at reporting entity level and then applies to every such liability in the group. A manufacturing arm inside a group that finances customers does not get its own answer.</p></div>
+</div>
+<div class="pitem" data-p="9">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-9">
+    <span class="pnum">Q9</span>
+    <span class="ptitle">Can a single borrowing be split between the two categories?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-9" hidden><p>Yes, where the portion funding the customer-financing book can be identified on a non-arbitrary basis. The word non-arbitrary carries the test: a funding policy that designates specific facilities to the lending book supports the split; a pro-rata balance sheet allocation generally does not.</p></div>
+</div>
+<div class="pitem" data-p="10">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-10">
+    <span class="pnum">Q10</span>
+    <span class="ptitle">Does an insurer that invests in assets automatically classify customer lending as operating?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-10" hidden><p>No. The two specified activities are separate. A conclusion on investing in assets does not extend to providing financing to customers, which needs its own assessment.</p></div>
+</div>
+<h3 style="margin-top:26px">Specific items that catch reporters out</h3>
+<div class="pitem" data-p="11">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-11">
+    <span class="pnum">Q11</span>
+    <span class="ptitle">Interest on an income tax refund &#8212; income tax, or not?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-11" hidden><p>This is a genuine policy choice with a consequential outcome. The IASB has confirmed that IAS 12 does not address interest and penalties on income taxes; an entity applies either IAS 12 or IAS 37 and IFRS 9. Only amounts accounted for under IAS 12 may enter the mandatory income tax line, which is otherwise closed. The policy must be applied consistently to interest received and interest paid &#8212; many entities currently present them in different captions.</p></div>
+</div>
+<div class="pitem" data-p="12">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-12">
+    <span class="pnum">Q12</span>
+    <span class="ptitle">Money market funds: cash equivalent or investment?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-12" hidden><p>Test them against IAS 7. Most funds held for yield rather than to meet short-term commitments fail on maturity or on insignificant risk of change in value. A cash equivalent follows the cash and cash equivalents rule; an investment that fails the definition is tested under the general independent-return criterion. The classification must be revisited when a mandate changes.</p></div>
+</div>
+<div class="pitem" data-p="13">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-13">
+    <span class="pnum">Q13</span>
+    <span class="ptitle">Customer advances with a significant financing component?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-13" hidden><p>Two accounts on opposite sides, and they do not offset. Interest earned on the cash held is investing. Interest expense recognised on the contract liability is financing, because a contract liability is a Type 2 liability.</p></div>
+</div>
+<div class="pitem" data-p="14">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-14">
+    <span class="pnum">Q14</span>
+    <span class="ptitle">Service concession arrangements under the financial asset model?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-14" hidden><p>The finance income is operating, not investing. EY treats the IFRIC 12 financial asset like an IFRS 15 receivable: it arises from the supply of construction and operating services whose income and expenses are operating, so the return follows. Infrastructure groups presenting this in finance income today would move it in error.</p></div>
+</div>
+<div class="pitem" data-p="15">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-15">
+    <span class="pnum">Q15</span>
+    <span class="ptitle">Capitalised borrowing costs &#8212; does the depreciation carry a financing nature?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-15" hidden><p>No. Once capitalised, the cost loses its previous nature and becomes part of the asset. Depreciation is classified by the nature of the asset. No memo tracking of the interest component is required, and building one would be waste.</p></div>
+</div>
+<div class="pitem" data-p="16">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-16">
+    <span class="pnum">Q16</span>
+    <span class="ptitle">Contingent consideration remeasurement?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-16" hidden><p>Operating, where the acquired business gives rise to operating income &#8212; and this holds even where the contingent consideration meets the definition of a derivative, because the specific guidance prevails over the general derivative requirements.</p></div>
+</div>
+<div class="pitem" data-p="17">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-17">
+    <span class="pnum">Q17</span>
+    <span class="ptitle">Government grants presented gross?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-17" hidden><p>Gross grant income falls to the operating residual: it is not a return on an independent-return asset, does not arise from a Type 1 liability, and is not interest on a Type 2 liability. Grant income netted against an item follows that item&#8217;s category. The same economic grant can therefore land differently depending only on the IAS 20 presentation election.</p></div>
+</div>
+<div class="pitem" data-p="18">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-18">
+    <span class="pnum">Q18</span>
+    <span class="ptitle">Operating lease rental income as a lessor?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-18" hidden><p>It depends on whether the asset is used in the entity&#8217;s own operations. Equipment leased out standalone can generate an individual and largely independent return, giving investing. An asset that remains part of the operating fleet and is leased seasonally stays operating. Both answers are defensible on different facts, which is why the conclusion must be documented.</p></div>
+</div>
+<div class="pitem" data-p="19">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-19">
+    <span class="pnum">Q19</span>
+    <span class="ptitle">Finance lease income as a lessor?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-19" hidden><p>Investing by default. The net investment in the lease is a distinct unit of account that generates a return independently. It flips to operating only on a main-business-activity conclusion.</p></div>
+</div>
+<div class="pitem" data-p="20">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-20">
+    <span class="pnum">Q20</span>
+    <span class="ptitle">A sub-lease funded by a head lease?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-20" hidden><p>A deliberate asymmetry the investor narrative has to carry. Sub-lease interest income can be operating on a main-business-activity conclusion, while head lease interest expense is a Type 2 liability expense and is always financing. Net interest margin on the book straddles two subtotals and cannot be shown as a single operating line.</p></div>
+</div>
+<div class="pitem" data-p="21">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-21">
+    <span class="pnum">Q21</span>
+    <span class="ptitle">Intercompany foreign exchange eliminated on consolidation?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-21" hidden><p>Unsettled. The Interpretations Committee found two reasonable readings in March 2026: operating as the default, because the underlying item does not exist in the consolidated statement; or the category the item would have had before elimination, with an operating fallback where tracing involves undue cost or effort. Select a policy, document it, and expect audit attention in year one.</p></div>
+</div>
+<div class="pitem" data-p="22">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-22">
+    <span class="pnum">Q22</span>
+    <span class="ptitle">How low is the &#8220;undue cost or effort&#8221; threshold?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-22" hidden><p>Lower than impracticability under IAS 8, but not a free pass. The entity must still assess feasibility for each population. A defensible position is full tracing for borrowings and lease liabilities, where the category is unambiguous, and relief for high-volume trade balances.</p></div>
+</div>
+<h3 style="margin-top:26px">Presentation, aggregation and labelling</h3>
+<div class="pitem" data-p="23">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-23">
+    <span class="pnum">Q23</span>
+    <span class="ptitle">Can the operating subtotal be labelled something else?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-23" hidden><p>Yes, where the alternative faithfully represents the item. Operating result and net operating income are both acceptable. Retaining the standard&#8217;s wording in year one is lower risk, because the new subtotal will not equal the old operating profit and a familiar label invites the wrong comparison.</p></div>
+</div>
+<div class="pitem" data-p="24">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-24">
+    <span class="pnum">Q24</span>
+    <span class="ptitle">Is OPDAI the same as EBITDA?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-24" hidden><p>No, and labelling it EBITDA is permitted but rarely accurate. OPDAI still excludes investing income and may include operating interest. An EBITDA computed on any other basis is an MPM with the full note.</p></div>
+</div>
+<div class="pitem" data-p="25">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-25">
+    <span class="pnum">Q25</span>
+    <span class="ptitle">Is function defined?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-25" hidden><p>No. The entity defines it, applies it consistently, and discloses the definition. Most entities have never written that definition down, which makes it a real early deliverable rather than a formality.</p></div>
+</div>
+<div class="pitem" data-p="26">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-26">
+    <span class="pnum">Q26</span>
+    <span class="ptitle">Does presenting one function line really trigger the five nature disclosures?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-26" hidden><p>Yes, across all operating expenses. The Interpretations Committee confirmed in March 2026 that the requirement contains no exceptions and applies whether the function presentation was elected or required by another standard.</p></div>
+</div>
+<div class="pitem" data-p="27">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-27">
+    <span class="pnum">Q27</span>
+    <span class="ptitle">Must the disclosed nature amounts equal the expense for the period?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-27" hidden><p>Not necessarily. They may include amounts capitalised into assets, in which case that fact must be disclosed.</p></div>
+</div>
+<div class="pitem" data-p="28">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-28">
+    <span class="pnum">Q28</span>
+    <span class="ptitle">Is &#8220;other&#8221; prohibited as a label?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-28" hidden><p>No, but it now attracts an obligation to evaluate whether a more informative label exists, and, for an aggregate of only immaterial items, to consider whether the total has grown large enough that a reader could reasonably question it. Where the balance is material and no better label exists, the nature and amount of the largest item within it must be disclosed.</p></div>
+</div>
+<div class="pitem" data-p="29">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-29">
+    <span class="pnum">Q29</span>
+    <span class="ptitle">Can realised and unrealised fair value movements be presented separately?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-29" hidden><p>Permitted but not automatic. IFRS Accounting Standards do not define realised or unrealised, so the entity develops the definition under IAS 8 and must satisfy both the disaggregation criterion and the requirement that both amounts are recognised and measured in accordance with IFRS Accounting Standards.</p></div>
+</div>
+<h3 style="margin-top:26px">Management performance measures</h3>
+<div class="pitem" data-p="30">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-30">
+    <span class="pnum">Q30</span>
+    <span class="ptitle">Is a published ratio an MPM?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-30" hidden><p>The ratio is not. Its numerator can be, even where the numerator is never published on its own &#8212; the requirement that a measure be used by itself is disapplied for this case. Return on capital employed built on adjusted operating profit is the standard example.</p></div>
+</div>
+<div class="pitem" data-p="31">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-31">
+    <span class="pnum">Q31</span>
+    <span class="ptitle">Are &#8220;what if&#8221; measures caught?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-31" hidden><p>Yes, capable of being MPMs. A result stated as if IFRS 16 had not been applied is not measured in accordance with IFRS Accounting Standards, but MPMs are by definition management-defined and the disclosure requirements contemplate a non-IFRS basis. Entities reporting pre-IFRS 16 leverage should test rather than assume.</p></div>
+</div>
+<div class="pitem" data-p="32">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-32">
+    <span class="pnum">Q32</span>
+    <span class="ptitle">Is an additional subtotal an MPM?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-32" hidden><p>Generally yes. A subtotal presented because it is necessary for a useful structured summary is required generally but not specifically, so it meets the definition where the other limbs hold. The listed subtotals such as gross profit and OPDAI are carved out.</p></div>
+</div>
+<div class="pitem" data-p="33">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-33">
+    <span class="pnum">Q33</span>
+    <span class="ptitle">What counts as a public communication?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-33" hidden><p>Scope wide and eliminate, rather than scope narrow and be caught. Annual report, results releases, investor presentations, transcripts, management commentary and sustainability reporting all qualify. KPMG also flags communications relating to a previous period that are routinely issued after the financial statements.</p></div>
+</div>
+<div class="pitem" data-p="34">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-34">
+    <span class="pnum">Q34</span>
+    <span class="ptitle">Are MPMs audited?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-34" hidden><p>Yes. The notes are an integral part of the financial statements. For most groups this is the first time an adjusted measure enters audit scope.</p></div>
+</div>
+<div class="pitem" data-p="35">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-35">
+    <span class="pnum">Q35</span>
+    <span class="ptitle">What if we stop using a measure?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-35" hidden><p>The obligation continues for that period. Restate the comparative and explain the cessation. The ledger must retain the ability to compute the abandoned measure for at least one more period.</p></div>
+</div>
+<div class="pitem" data-p="36">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-36">
+    <span class="pnum">Q36</span>
+    <span class="ptitle">Can any numerator be used for an additional earnings per share measure?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-36" hidden><p>No. The numerator must be an MPM, or a total or subtotal listed in the standard. Revenue per share is the worked counter-example: it is now prohibited inside the financial statements.</p></div>
+</div>
+<div class="pitem" data-p="37">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-37">
+    <span class="pnum">Q37</span>
+    <span class="ptitle">Do the requirements conflict with securities regulators?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-37" hidden><p>Possibly. KPMG notes broad alignment with ESMA and IOSCO guidance on description and reconciliation, but the scope differs &#8212; regulators cover non-GAAP measures on assets, liabilities and cash flows too, while IFRS 18 covers only subtotals of income and expenses. The SEC restricts certain measures inside the financial statements. Dual-listed entities should resolve this early, because the resolution may be to change the measure rather than the disclosure.</p></div>
+</div>
+<h3 style="margin-top:26px">Transition, systems and the wider business</h3>
+<div class="pitem" data-p="38">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-38">
+    <span class="pnum">Q38</span>
+    <span class="ptitle">When does it apply?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-38" hidden><p>Annual reporting periods beginning on or after 1 January 2027, with earlier application permitted. Retrospective application is required, with specified transition provisions.</p></div>
+</div>
+<div class="pitem" data-p="39">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-39">
+    <span class="pnum">Q39</span>
+    <span class="ptitle">What is the first live deliverable?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-39" hidden><p>For a December year end adopting on 1 January 2027, the first interim period of 2027 &#8212; not the 2027 annual report. The operating subtotal is required in condensed interim statements, the MPM disclosures apply, and the transition reconciliation is required at interim too. Systems must be ready a full reporting period earlier than the annual date suggests.</p></div>
+</div>
+<div class="pitem" data-p="40">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-40">
+    <span class="pnum">Q40</span>
+    <span class="ptitle">How hard is the comparative reconciliation?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-40" hidden><p>Harder than most plans assume. It is a required disclosure, not a working paper, and producing it means re-tagging a period that has already closed. The revised chart of accounts must therefore carry a mapping from every legacy account rather than starting clean.</p></div>
+</div>
+<div class="pitem" data-p="41">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-41">
+    <span class="pnum">Q41</span>
+    <span class="ptitle">What should be renegotiated, and when?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-41" hidden><p>Anything referencing an IAS 1 subtotal: debt covenants, management remuneration, earn-outs. A covenant drafted against the old operating profit may be breached or slackened by presentation alone. This has the longest lead time of any transition task and should start before the numbers move.</p></div>
+</div>
+<div class="pitem" data-p="42">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-42">
+    <span class="pnum">Q42</span>
+    <span class="ptitle">Is there an election that changes the categorisation outcome?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-42" hidden><p>One. Eligible entities &#8212; venture capital organisations, mutual funds, unit trusts &#8212; may elect fair value measurement for associates and joint ventures under IAS 28.18, which brings the related income into operating where investing in assets is a main business activity. It is the only route by which associate income reaches operating, since the equity-method rule is otherwise absolute.</p></div>
+</div>
+<div class="pitem" data-p="43">
+  <button class="phead" type="button" aria-expanded="false" aria-controls="pbody-43">
+    <span class="pnum">Q43</span>
+    <span class="ptitle">Where should the category tag live in the ledger?</span>
+    <span class="psign" aria-hidden="true">+</span>
+  </button>
+  <div class="pbody" id="pbody-43" hidden><p>An account master attribute plus deliberate account splitting handles the great majority of cases and is materially cheaper than a new posting dimension. Reserve the dimension for populations that genuinely vary by transaction &#8212; for most non-financial entities that is foreign exchange and little else. A consolidation-layer mapping is not sufficient, because it cannot produce the standalone statements subsidiaries must file.</p></div>
+</div>
+</div>
+<p>43 questions. Where an answer says the matter is unsettled or a policy choice, that is the finding &#8212; the entity concludes on its own facts and documents the conclusion. An answer that reads as settled here is settled in the standard.</p>
+</section>
+
+<section id="howto">
+<h2><span class="num">8 &#183; How to use this</span>Five sequences, depending on what you came for</h2>
+
+<p>This piece is a reference rather than a narrative, and different readers need different routes
+through it. The companion diagnostic tool takes a chart of accounts and applies the reasoning set
+out here; the two are meant to be used together, with this piece answering the question the tool
+cannot: why.</p>
+
+<div class="tblwrap">
+<table>
+<thead><tr><th style="width:26%">If you are</th><th style="width:34%">Read in this order</th><th>And then</th></tr></thead>
+<tbody>
+<tr><td>Scoping a transition for the first time</td>
+<td>Essence &#8594; decision tree &#8594; the worked example</td>
+<td>Run your own numbers through the tool before estimating effort. The profile differs so much by sector that a generic plan will mis-resource.</td></tr>
+<tr><td>Preparing an audit committee paper</td>
+<td>The fixed points table &#8594; MPM section &#8594; the judgement questions in the FAQ</td>
+<td>Lead with the items the standard settles, so the committee&#8217;s time goes to the genuine policy choices rather than to matters already closed.</td></tr>
+<tr><td>Designing the chart of accounts</td>
+<td>Decision tree &#8594; aggregation &#8594; labelling</td>
+<td>Write the definition of function before the tagging starts. The tags implement the definition; without it the tagging cannot be reviewed.</td></tr>
+<tr><td>Reviewing the performance measures</td>
+<td>MPM section &#8594; the MPM questions in the FAQ</td>
+<td>Sweep wide across public communications and eliminate, rather than sweeping narrow and being caught by a measure nobody remembered publishing.</td></tr>
+<tr><td>Briefing investors</td>
+<td>The worked example &#8594; the lender contrast</td>
+<td>Publish the bridge from the current measure to the new subtotal alongside the first results, not in response to the first question about it.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h3>Three habits worth adopting early</h3>
+
+<p><b>Separate what is settled from what is open.</b> Roughly two thirds of the classification
+questions have an answer in the standard. Treating all of them as debatable wastes the scarce
+resource, which is senior attention on the third that genuinely is.</p>
+
+<p><b>Test rules against source wording, not tidied names.</b> A rule library built against clean
+labels fails on real filings, where an account is called what the note calls it. Every gap found in
+building the companion tool came from running real audited data rather than sample data.</p>
+
+<p><b>Verify against the artifact, not the process.</b> When a change is made to a rule set or a
+mapping, confirm it is present in the output rather than trusting that the step reported success.
+That advice comes from having been caught by the opposite more than once.</p>
+
+<div class="note">
+<b class="lbl">On the companion tool</b>
+The diagnostic reads a chart of accounts at note level, applies the categorisation rules described
+here, and returns the restated statement, the reconciliation, the revised chart of accounts, the MPM
+register, the judgement register, and the sensitivity analysis. It runs entirely in the browser: the
+financial data is never transmitted. It is an indicative diagnostic, not an audit, and every item it
+flags as a judgement remains the entity&#8217;s to conclude.
+</div>
+</section>
+
+
+<section id="abbreviations">
+<h2><span class="num">9 &#183; Abbreviations</span>The vocabulary the standard assumes</h2>
+
+<p>Several terms below are ordinary English words used as defined terms, which is where most
+misreadings start. Nature and function both have precise meanings here. Operating is a residual
+rather than a description. A specified subtotal is a term of art that determines whether the MPM
+note applies.</p>
+
+<div class="tblwrap">
+<table>
+<thead><tr><th style="width:22%">Term</th><th style="width:56%">What it means</th><th>Domain</th></tr></thead>
+<tbody>
+<tr><td>AGR</td><td>Adjusted gross revenue &#8212; Indian telecom licensing term; appears in transition examples</td><td>Sector</td></tr>
+<tr><td>CODM</td><td>Chief operating decision maker &#8212; the function that allocates resources to and assesses the performance of operating segments (IFRS 8.7)</td><td>Segment reporting</td></tr>
+<tr><td>Discontinued operation</td><td>A component disposed of or held for sale, presented in a separate mandatory line excluded from all three subtotals</td><td>IFRS 18</td></tr>
+<tr><td>EBITDA</td><td>Earnings before interest, tax, depreciation and amortisation. Not defined by IFRS; an EBITDA computed on any basis other than OPDAI is an MPM</td><td>Non-GAAP</td></tr>
+<tr><td>ESMA</td><td>European Securities and Markets Authority, whose alternative performance measures guidelines overlap the MPM requirements</td><td>Regulatory</td></tr>
+<tr><td>Elasticity</td><td>The percentage move in a subtotal for a one per cent move in a driver</td><td>Analysis</td></tr>
+<tr><td>Financing category</td><td>Income and expenses from the raising of finance, and interest on liabilities that do not involve only the raising of finance</td><td>IFRS 18</td></tr>
+<tr><td>Function</td><td>Classification of an expense by what it was for &#8212; cost of sales, distribution, administration. Not defined by the standard; the entity defines it</td><td>IFRS 18</td></tr>
+<tr><td>IAS 1</td><td>Presentation of Financial Statements, superseded by IFRS 18</td><td>Standards</td></tr>
+<tr><td>IAS 12</td><td>Income Taxes. Only amounts within its scope may enter the mandatory income tax line</td><td>Standards</td></tr>
+<tr><td>IAS 28.18</td><td>The fair value measurement exemption for associates and joint ventures, available to venture capital organisations, mutual funds and unit trusts</td><td>Standards</td></tr>
+<tr><td>IAS 8</td><td>Accounting Policies, Changes in Accounting Estimates and Errors, retitled Basis of Preparation of Financial Statements once IFRS 18 is effective</td><td>Standards</td></tr>
+<tr><td>IFRIC 12</td><td>Service Concession Arrangements. Finance income under the financial asset model is operating</td><td>Standards</td></tr>
+<tr><td>IFRS 8</td><td>Operating Segments. Unchanged by IFRS 18, but the reconciliation target changes</td><td>Standards</td></tr>
+<tr><td>IOSCO</td><td>International Organization of Securities Commissions, whose non-GAAP guidance overlaps the MPM requirements</td><td>Regulatory</td></tr>
+<tr><td>Independent return criterion</td><td>The test for the investing category: whether an asset generates a return individually and largely independently of the entity&#8217;s other resources</td><td>IFRS 18</td></tr>
+<tr><td>Investing category</td><td>Income and expenses from assets meeting the independent return criterion, plus equity-accounted results and cash and cash equivalents</td><td>IFRS 18</td></tr>
+<tr><td>Judgement sensitivity</td><td>The effect on operating profit if a flagged classification were concluded the other way. Temporary: it disappears once the policy is documented</td><td>Analysis</td></tr>
+<tr><td>MPM</td><td>Management performance measure &#8212; a publicly communicated subtotal of income and expenses, not specified by the standard, reflecting management&#8217;s view of performance</td><td>IFRS 18</td></tr>
+<tr><td>Main business activity</td><td>Investing in assets, or providing financing to customers, where either is a main activity of the reporting entity. Triggers the operating-category exceptions</td><td>IFRS 18</td></tr>
+<tr><td>NCI</td><td>Non-controlling interests. Each MPM reconciling item must show its NCI effect</td><td>IFRS 18</td></tr>
+<tr><td>Nature</td><td>Classification of an expense by what it is &#8212; employee benefits, depreciation, materials. Always required somewhere</td><td>IFRS 18</td></tr>
+<tr><td>OPDAI</td><td>Operating profit or loss before depreciation, amortisation and impairment within the scope of IAS 36. A specified subtotal, so presenting it does not trigger the MPM note</td><td>IFRS 18</td></tr>
+<tr><td>Operating category</td><td>The residual. Items land here by failing every other categorisation test</td><td>IFRS 18</td></tr>
+<tr><td>Primary financial statements</td><td>The statements themselves, whose role is a useful structured summary, as distinct from the notes</td><td>IFRS 18</td></tr>
+<tr><td>Specified subtotal</td><td>A subtotal named by the standard. Presenting one does not create an MPM</td><td>IFRS 18</td></tr>
+<tr><td>Type 1 liability</td><td>A liability from a transaction involving only the raising of finance. Its interest is financing</td><td>IFRS 18</td></tr>
+<tr><td>Type 2 liability</td><td>A liability from a transaction other than the raising of finance &#8212; a lease, a contract liability, a provision. Only the interest component is financing</td><td>IFRS 18</td></tr>
+<tr><td>Undue cost or effort</td><td>The relief threshold for tracing foreign exchange differences to an underlying category. Lower than impracticability under IAS 8, but still requiring assessment</td><td>IFRS 18</td></tr>
+<tr><td>Useful structured summary</td><td>The stated role of the primary financial statements, and the criterion for deciding what reaches the face</td><td>IFRS 18</td></tr>
+<tr><td>bps</td><td>Basis points; one hundredth of one per cent</td><td>Analysis</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+
+<section id="references">
+<h2><span class="num">10 &#183; References</span>What this piece is built on</h2>
+
+<p>Everything above is drawn from the standard itself and from the three firm publications below.
+Where the firms differ, or where a matter is unsettled, that is said in the text rather than
+resolved silently.</p>
+
+<div class="refblock">
+<h4>The standard and the Board&#8217;s own material</h4>
+<ol class="reflist">
+<li>International Accounting Standards Board, IFRS 18 Presentation and Disclosure in Financial
+Statements, issued 9 April 2024, effective for annual reporting periods beginning on or after
+1 January 2027.
+<a href="https://www.ifrs.org/issued-standards/list-of-standards/ifrs-18-presentation-and-disclosure-in-financial-statements/" target="_blank" rel="noopener">Source</a>.
+<span class="refnote">Anchors the five categories, the three mandatory subtotals, the MPM
+definition, and the aggregation and labelling requirements throughout.</span></li>
+<li>IFRS Interpretations Committee agenda decisions, March 2026, on the classification of foreign
+exchange differences on eliminated intragroup balances, the scope of the expenses-by-nature
+disclosure, and the presentation of a holding company&#8217;s separate financial statements.
+<a href="https://www.ifrs.org/projects/ifric-updates/" target="_blank" rel="noopener">Source</a>.
+<span class="refnote">Anchors the three questions in the FAQ that are described as unsettled or as
+having been recently clarified.</span></li>
+</ol>
+</div>
+
+<div class="refblock">
+<h4>Firm publications</h4>
+<ol class="reflist" start="3">
+<li>EY, Applying IFRS: A closer look at IFRS 18 Presentation and Disclosure in Financial Statements,
+updated April 2026.
+<a href="https://www.ey.com/en_gl/technical/ifrs-technical-resources" target="_blank" rel="noopener">Source</a>.
+<span class="refnote">Anchors the specific-item answers in the FAQ &#8212; service concessions,
+contingent consideration, lessor income, transaction costs, government grants, the ratio-numerator
+point, and the holding company analysis.</span></li>
+<li>KPMG, First Impressions: Presentation and disclosure &#8212; IFRS 18, June 2024.
+<a href="https://kpmg.com/xx/en/home/insights/2024/04/ifrs-18-presentation-disclosure.html" target="_blank" rel="noopener">Source</a>.
+<span class="refnote">Anchors the audit-scope point on MPMs, the OPDAI and EBITDA labelling
+discussion, the undue cost or effort threshold, the interim reporting requirements, the regulatory
+overlap with ESMA and IOSCO, and the IAS 28.18 transition election.</span></li>
+<li>Deloitte, iGAAP in Focus &#8212; IASB publishes new standard on presentation and disclosure in
+financial statements, April 2024.
+<a href="https://www.iasplus.com/en/publications/global/igaap-in-focus" target="_blank" rel="noopener">Source</a>.
+<span class="refnote">Anchors the roles of the primary financial statements and the notes, the
+aggregation and disaggregation sequence, the nature-or-function presentation factors, and the
+consequential amendments to IAS 7 and IAS 33.</span></li>
+</ol>
+</div>
+
+<div class="refblock">
+<h4>Related standards referenced</h4>
+<ol class="reflist" start="6">
+<li>IAS 7 Statement of Cash Flows, as amended to require the operating profit subtotal as the
+starting point for the indirect method.
+<span class="refnote">Anchors the cash flow consequence noted in the essence section.</span></li>
+<li>IAS 33 Earnings per Share, as amended for additional earnings per share measures.
+<span class="refnote">Anchors the answer that a numerator must be an MPM or a listed subtotal, and
+that revenue per share is prohibited.</span></li>
+<li>IAS 28 Investments in Associates and Joint Ventures, paragraph 18.
+<span class="refnote">Anchors the only route by which equity-accounted income can reach the
+operating category.</span></li>
+</ol>
+</div>
+
+<div class="carry">
+<p><strong>Profit does not move; almost everything above it does.</strong> An entity that measures
+the transition by the change in profit for the period will conclude it is immaterial and staff it
+accordingly. The change is in the subtotals, the notes and the control environment.</p>
+<p><strong>The implementation profile is sector-specific, and generic plans mis-resource.</strong>
+A lender&#8217;s effort is in categorisation; a consumer goods group&#8217;s is almost entirely in
+the MPM framework and the nature disclosures. Both plans look identical at the checklist level and
+should not be.</p>
+<p><strong>Roughly two thirds of the classification questions are already settled.</strong> The
+scarce resource is senior attention on the third that is genuinely open. Separating the two is the
+highest-value early task.</p>
+<p><strong>The adjusted measure is now an audited output.</strong> Every reconciling item must be
+extractable by rule from tagged accounts, with its tax and minority effect computable per item. That
+is a chart of accounts requirement, and it has to exist before the first period it applies to.</p>
+</div>
+
+<p class="finalq">If the measure a business is managed on cannot survive an audited reconciliation,
+was it ever measuring what management believed it was?</p>
+</section>
+
+
+</div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <p><b>Article &#183; IFRS 18 Presentation and Disclosure in Financial Statements</b><br>
+    Article written, edited and designed by Krishnendu Pal.<br>
+    &#169; Intelligent Adaptive Finance. All rights reserved. Published for intelligentadaptivefinance.com.<br>
+    Contact: <a href="mailto:Krishnendu.pal@iafinsight.com">Krishnendu.pal@iafinsight.com</a> &#8226; <a href="mailto:Krishnendu.pal@intelligentadaptivefinance.com">Krishnendu.pal@intelligentadaptivefinance.com</a></p>
+  </div>
+</footer>
+</div>
+
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('#toc a'));
+  var secs = links.map(function(a){ return document.getElementById(a.getAttribute('href').slice(1)); }).filter(Boolean);
+  function spy(){
+    var cur = 0;
+    for (var i=0;i<secs.length;i++){ if (secs[i].getBoundingClientRect().top <= 150) cur = i; }
+    links.forEach(function(a,i){ a.classList.toggle('active', i===cur); });
+  }
+  window.addEventListener('scroll', spy, {passive:true});
+  window.addEventListener('resize', spy);
+  spy();
+})();
+
+(function(){
+  var list = document.getElementById('plist');
+  if (!list) return;
+  var items = Array.prototype.slice.call(list.querySelectorAll('.pitem'));
+
+  function setState(item, open){
+    var head = item.querySelector('.phead');
+    var body = item.querySelector('.pbody');
+    var sign = item.querySelector('.psign');
+    item.classList.toggle('open', open);
+    head.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (open) { body.removeAttribute('hidden'); } else { body.setAttribute('hidden',''); }
+    sign.textContent = open ? '\u2212' : '+';
+  }
+
+  items.forEach(function(item){
+    item.querySelector('.phead').addEventListener('click', function(){
+      setState(item, !item.classList.contains('open'));
+    });
+  });
+
+  document.getElementById('pExpandAll').addEventListener('click', function(){
+    items.forEach(function(i){ setState(i, true); });
+  });
+  document.getElementById('pCollapseAll').addEventListener('click', function(){
+    items.forEach(function(i){ setState(i, false); });
+  });
+})();
+</script>
+</body>
+</html>
